@@ -1,10 +1,21 @@
-#ifndef RESTCLIENT
-#define RESTCLIENT
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QObject>
 
-class RestClient
-{
+class RestClient : public QObject {
+    Q_OBJECT
+
 public:
-    RestClient();
-};
+    explicit RestClient(QObject* parent = nullptr);
 
-#endif // RESTCLIENT
+    Q_INVOKABLE void sendRequest();
+
+private slots:
+    void onDataReadReady();
+    void onRequestCompleted();
+
+private:
+    QNetworkAccessManager* m_networkAccessManager;
+    QNetworkReply* m_reply;
+    QByteArray* m_dataBuffer;
+};

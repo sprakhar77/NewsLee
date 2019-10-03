@@ -1,7 +1,17 @@
+#include <QObject>
 
-class Dispatcher
-{
+class RestClient;
+
+class Dispatcher : public QObject {
+    Q_OBJECT
+
+    Q_PROPERTY(RestClient* restClient READ restClient CONSTANT)
+
 public:
-    Dispatcher();
-};
+    explicit Dispatcher(QObject* parent = nullptr);
 
+    RestClient* restClient() const;
+
+private:
+    RestClient* m_restClient{ nullptr };
+};
