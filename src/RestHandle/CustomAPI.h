@@ -2,10 +2,10 @@
 
 #include <QObject>
 
-class EverythingAPI : public QObject {
+class CustomAPI : public QObject {
     Q_OBJECT
 public:
-    explicit EverythingAPI(QObject* parent = nullptr);
+    explicit CustomAPI(QObject* parent = nullptr);
 
 private:
     RestClient m_restClient;

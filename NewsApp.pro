@@ -14,7 +14,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         src/RequestBackend.cpp \
-        src/RestHandle/EverythingAPI.cpp \
+        src/RestHandle/CustomAPI.cpp \
         src/RestHandle/Response/Article.cpp \
         src/RestHandle/Response/Source.cpp \
         src/RestHandle/RestClient/RestClient.cpp \
@@ -40,7 +40,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     src/RequestBackend.h \
-    src/RestHandle/EverythingAPI.h \
+    src/RestHandle/CustomAPI.h \
     src/RestHandle/Response/Article.h \
     src/RestHandle/Response/Source.h \
     src/RestHandle/RestClient/RestClient.h \

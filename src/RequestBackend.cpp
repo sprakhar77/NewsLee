@@ -2,7 +2,7 @@
 
 RequestBackend::RequestBackend(QObject* parent)
     : QObject(parent)
-    , m_everythingAPI{ new EverythingAPI() }
+    , m_customAPI{ new CustomAPI() }
     , m_sourcesAPI{ new SourcesAPI() }
     , m_trendingAPI{ new TrendingAPI() }
 {
@@ -11,9 +11,9 @@ RequestBackend::RequestBackend(QObject* parent)
     connect(m_trendingAPI, &TrendingAPI::trendingNewsChanged, this, &RequestBackend::onTrendingNewsChanged);
 }
 
-EverythingAPI* RequestBackend::everythingAPI() const
+CustomAPI* RequestBackend::customAPI() const
 {
-    return m_everythingAPI;
+    return m_customAPI;
 }
 
 SourcesAPI* RequestBackend::sourcesAPI() const
@@ -46,7 +46,7 @@ void RequestBackend::onSourcesChanged()
 
 void RequestBackend::onTrendingNewsChanged()
 {
-    const auto trendingArticles = m_trendingAPI->trending();
+    const auto trendingArticles = m_trendingAPI->trendingArticles();
     for (const auto article : trendingArticles) {
         qDebug() << article.title() << " ";
     }

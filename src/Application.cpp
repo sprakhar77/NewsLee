@@ -14,7 +14,7 @@ void Application::registerQMLTypes()
     qmlRegisterType<RequestBackend>();
     qmlRegisterType<TrendingAPI>();
     qmlRegisterType<SourcesAPI>();
-    qmlRegisterType<EverythingAPI>();
+    qmlRegisterType<CustomAPI>();
 }
 
 bool Application::initialize()

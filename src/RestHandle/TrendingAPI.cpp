@@ -30,9 +30,9 @@ QString TrendingAPI::category() const
     return m_category;
 }
 
-QVector<Article> TrendingAPI::trending() const
+QVector<Article> TrendingAPI::trendingArticles() const
 {
-    return m_trending;
+    return m_trendingArticles;
 }
 
 void TrendingAPI::fetch()
@@ -61,10 +61,10 @@ void TrendingAPI::setCategory(QString category)
 void TrendingAPI::handleRestResponse(const QJsonObject& json)
 {
     Q_ASSERT(!json.empty());
-    m_trending.clear();
+    m_trendingArticles.clear();
     const auto trendingArray = json[QLatin1String(JsonKeys::ARTICLES)].toArray();
     for (const auto trending : trendingArray) {
-        m_trending.append(Article(trending.toObject()));
+        m_trendingArticles.append(Article(trending.toObject()));
     }
     emit trendingNewsChanged();
 }

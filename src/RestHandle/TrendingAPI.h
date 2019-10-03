@@ -14,7 +14,7 @@ public:
 
     QString country() const;
     QString category() const;
-    QVector<Article> trending() const;
+    QVector<Article> trendingArticles() const;
     void fetch();
 
 public slots:
@@ -33,5 +33,5 @@ private:
     RestClient m_restClient;
     QString m_country;
     QString m_category;
-    QVector<Article> m_trending;
+    QVector<Article> m_trendingArticles;
 };
