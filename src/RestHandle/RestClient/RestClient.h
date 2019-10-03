@@ -10,7 +10,7 @@ class RestClient : public QObject {
 public:
     explicit RestClient(QObject* parent = nullptr);
 
-    Q_INVOKABLE void sendRequest();
+    void sendRequest(const QUrl& url);
 
 signals:
     void responseRecieved(const QJsonObject& json);

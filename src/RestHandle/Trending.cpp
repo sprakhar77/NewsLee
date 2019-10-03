@@ -1,5 +1,18 @@
 #include "Trending.h"
 
+#include <QJsonArray>
+
+namespace {
+namespace ApiEndpoint {
+    const char* const URL_TRENDING = "https://newsapi.org/v2/top-headlines?country=us";
+}
+
+namespace JsonKeys {
+    const char* const TOTAL_RESULTS = "totalResults";
+    const char* const ARTICLES = "articles";
+}
+}
+
 Trending::Trending(QObject* parent)
     : QObject(parent)
     , m_restClient{ new RestClient() }
@@ -15,6 +28,11 @@ QString Trending::country() const
 QString Trending::category() const
 {
     return m_category;
+}
+
+QVector<Article> Trending::trending() const
+{
+    return m_trending;
 }
 
 void Trending::setCountry(QString country)
@@ -37,4 +55,11 @@ void Trending::setCategory(QString category)
 
 void Trending::handleRestResponse(const QJsonObject& json)
 {
+    Q_ASSERT(!json.empty());
+    m_trending.clear();
+    const auto trendingArray = json[QLatin1String(JsonKeys::ARTICLES)].toArray();
+    for (const auto trending : trendingArray) {
+        m_trending.append(Article(trending.toObject()));
+    }
+    emit trendingNewsChanged();
 }

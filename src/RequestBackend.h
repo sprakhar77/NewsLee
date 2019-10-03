@@ -17,8 +17,8 @@ public:
     Trending* trending() const;
 
 public slots:
-    void onSourcesUpdated(const QVector<Source>& sources);
-    void onTrendingNewsUpdated(const QVector<Article>& articles);
+    void onSourcesChanged();
+    void onTrendingNewsChanged();
 
 private:
     Everything* m_everything{ nullptr };

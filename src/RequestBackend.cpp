@@ -7,8 +7,8 @@ RequestBackend::RequestBackend(QObject* parent)
     , m_trending{ new Trending() }
 {
     //Do for everything as well
-    connect(m_sources, &Sources::updateSources, this, &RequestBackend::onSourcesUpdated);
-    connect(m_trending, &Trending::updateTrendingNews, this, &RequestBackend::onTrendingNewsUpdated);
+    connect(m_sources, &Sources::sourcesChanged, this, &RequestBackend::onSourcesChanged);
+    connect(m_trending, &Trending::trendingNewsChanged, this, &RequestBackend::onTrendingNewsChanged);
 }
 
 Everything* RequestBackend::everything() const
@@ -26,10 +26,18 @@ Trending* RequestBackend::trending() const
     return m_trending;
 }
 
-void RequestBackend::onSourcesUpdated(const QVector<Source>& sources)
+void RequestBackend::onSourcesChanged()
 {
+    const auto updatedSources = m_sources->sources();
+    for (const auto source : updatedSources) {
+        qDebug() << source.name() << " ";
+    }
 }
 
-void RequestBackend::onTrendingNewsUpdated(const QVector<Article>& articles)
+void RequestBackend::onTrendingNewsChanged()
 {
+    const auto trendingArticles = m_trending->trending();
+    for (const auto article : trendingArticles) {
+        qDebug() << article.title() << " ";
+    }
 }
