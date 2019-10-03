@@ -1,4 +1,4 @@
-#include "Trending.h"
+#include "TrendingAPI.h"
 
 #include <QJsonArray>
 
@@ -13,29 +13,29 @@ namespace JsonKeys {
 }
 }
 
-Trending::Trending(QObject* parent)
+TrendingAPI::TrendingAPI(QObject* parent)
     : QObject(parent)
     , m_restClient{ new RestClient() }
 {
-    QObject::connect(&m_restClient, &RestClient::responseRecieved, this, &Trending::handleRestResponse);
+    QObject::connect(&m_restClient, &RestClient::responseRecieved, this, &TrendingAPI::handleRestResponse);
 }
 
-QString Trending::country() const
+QString TrendingAPI::country() const
 {
     return m_country;
 }
 
-QString Trending::category() const
+QString TrendingAPI::category() const
 {
     return m_category;
 }
 
-QVector<Article> Trending::trending() const
+QVector<Article> TrendingAPI::trending() const
 {
     return m_trending;
 }
 
-void Trending::setCountry(QString country)
+void TrendingAPI::setCountry(QString country)
 {
     if (m_country == country)
         return;
@@ -44,7 +44,7 @@ void Trending::setCountry(QString country)
     emit countryChanged(m_country);
 }
 
-void Trending::setCategory(QString category)
+void TrendingAPI::setCategory(QString category)
 {
     if (m_category == category)
         return;
@@ -53,7 +53,7 @@ void Trending::setCategory(QString category)
     emit categoryChanged(m_category);
 }
 
-void Trending::handleRestResponse(const QJsonObject& json)
+void TrendingAPI::handleRestResponse(const QJsonObject& json)
 {
     Q_ASSERT(!json.empty());
     m_trending.clear();

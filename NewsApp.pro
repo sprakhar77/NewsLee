@@ -14,14 +14,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         src/RequestBackend.cpp \
-        src/RestHandle/Everything.cpp \
-        src/RestHandle/Sources.cpp \
-        src/RestHandle/Trending.cpp \
+        src/RestHandle/EverythingAPI.cpp \
         src/RestHandle/Response/Article.cpp \
         src/RestHandle/Response/Source.cpp \
         src/RestHandle/RestClient/RestClient.cpp \
         src/Application.cpp \
         src/Dispatcher.cpp \
+        src/RestHandle/SourcesAPI.cpp \
+        src/RestHandle/TrendingAPI.cpp \
         src/main.cpp
 
 RESOURCES += qml.qrc \
@@ -40,11 +40,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     src/RequestBackend.h \
-    src/RestHandle/Everything.h \
-    src/RestHandle/Sources.h \
-    src/RestHandle/Trending.h \
+    src/RestHandle/EverythingAPI.h \
     src/RestHandle/Response/Article.h \
     src/RestHandle/Response/Source.h \
     src/RestHandle/RestClient/RestClient.h \
     src/Application.h \
-    src/Dispatcher.h
+    src/Dispatcher.h \
+    src/RestHandle/SourcesAPI.h \
+    src/RestHandle/TrendingAPI.h

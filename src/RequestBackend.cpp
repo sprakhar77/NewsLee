@@ -2,33 +2,33 @@
 
 RequestBackend::RequestBackend(QObject* parent)
     : QObject(parent)
-    , m_everything{ new Everything() }
-    , m_sources{ new Sources() }
-    , m_trending{ new Trending() }
+    , m_everythingAPI{ new EverythingAPI() }
+    , m_sourcesAPI{ new SourcesAPI() }
+    , m_trendingAPI{ new TrendingAPI() }
 {
     //Do for everything as well
-    connect(m_sources, &Sources::sourcesChanged, this, &RequestBackend::onSourcesChanged);
-    connect(m_trending, &Trending::trendingNewsChanged, this, &RequestBackend::onTrendingNewsChanged);
+    connect(m_sourcesAPI, &SourcesAPI::sourcesChanged, this, &RequestBackend::onSourcesChanged);
+    connect(m_trendingAPI, &TrendingAPI::trendingNewsChanged, this, &RequestBackend::onTrendingNewsChanged);
 }
 
-Everything* RequestBackend::everything() const
+EverythingAPI* RequestBackend::everythingAPI() const
 {
-    return m_everything;
+    return m_everythingAPI;
 }
 
-Sources* RequestBackend::sources() const
+SourcesAPI* RequestBackend::sourcesAPI() const
 {
-    return m_sources;
+    return m_sourcesAPI;
 }
 
-Trending* RequestBackend::trending() const
+TrendingAPI* RequestBackend::trendingAPI() const
 {
-    return m_trending;
+    return m_trendingAPI;
 }
 
 void RequestBackend::onSourcesChanged()
 {
-    const auto updatedSources = m_sources->sources();
+    const auto updatedSources = m_sourcesAPI->sources();
     for (const auto source : updatedSources) {
         qDebug() << source.name() << " ";
     }
@@ -36,7 +36,7 @@ void RequestBackend::onSourcesChanged()
 
 void RequestBackend::onTrendingNewsChanged()
 {
-    const auto trendingArticles = m_trending->trending();
+    const auto trendingArticles = m_trendingAPI->trending();
     for (const auto article : trendingArticles) {
         qDebug() << article.title() << " ";
     }

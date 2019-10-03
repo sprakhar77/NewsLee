@@ -1,29 +1,33 @@
-#include <src/RestHandle/Response/Article.h>
+#include <src/RestHandle/Response/Source.h>
 #include <src/RestHandle/RestClient/RestClient.h>
 
 #include <QObject>
 
-class Trending : public QObject {
+class SourcesAPI : public QObject {
     Q_OBJECT
 
     Q_PROPERTY(QString country READ country WRITE setCountry NOTIFY countryChanged)
     Q_PROPERTY(QString category READ category WRITE setCategory NOTIFY categoryChanged)
+    Q_PROPERTY(QString language READ language WRITE setLanguage NOTIFY languageChanged)
 
 public:
-    explicit Trending(QObject* parent = nullptr);
+    explicit SourcesAPI(QObject* parent = nullptr);
 
     QString country() const;
     QString category() const;
-    QVector<Article> trending() const;
+    QString language() const;
+    QVector<Source> sources() const;
 
 public slots:
     void setCountry(QString country);
     void setCategory(QString category);
+    void setLanguage(QString language);
 
 signals:
     void countryChanged(QString country);
     void categoryChanged(QString category);
-    void trendingNewsChanged();
+    void languageChanged(QString language);
+    void sourcesChanged();
 
 private slots:
     void handleRestResponse(const QJsonObject& json);
@@ -32,5 +36,6 @@ private:
     RestClient m_restClient;
     QString m_country;
     QString m_category;
-    QVector<Article> m_trending;
+    QString m_language;
+    QVector<Source> m_sources;
 };

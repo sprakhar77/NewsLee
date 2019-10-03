@@ -1,4 +1,4 @@
-#include "Sources.h"
+#include "SourcesAPI.h"
 
 #include <QJsonArray>
 
@@ -11,34 +11,34 @@ namespace JsonKeys {
 }
 }
 
-Sources::Sources(QObject* parent)
+SourcesAPI::SourcesAPI(QObject* parent)
     : QObject(parent)
     , m_restClient{ new RestClient() }
 {
-    QObject::connect(&m_restClient, &RestClient::responseRecieved, this, &Sources::handleRestResponse);
+    QObject::connect(&m_restClient, &RestClient::responseRecieved, this, &SourcesAPI::handleRestResponse);
 }
 
-QString Sources::country() const
+QString SourcesAPI::country() const
 {
     return m_country;
 }
 
-QString Sources::category() const
+QString SourcesAPI::category() const
 {
     return m_category;
 }
 
-QString Sources::language() const
+QString SourcesAPI::language() const
 {
     return m_language;
 }
 
-QVector<Source> Sources::sources() const
+QVector<Source> SourcesAPI::sources() const
 {
     return m_sources;
 }
 
-void Sources::setCountry(QString country)
+void SourcesAPI::setCountry(QString country)
 {
     if (m_country == country)
         return;
@@ -47,7 +47,7 @@ void Sources::setCountry(QString country)
     emit countryChanged(m_country);
 }
 
-void Sources::setCategory(QString category)
+void SourcesAPI::setCategory(QString category)
 {
     if (m_category == category)
         return;
@@ -56,7 +56,7 @@ void Sources::setCategory(QString category)
     emit categoryChanged(m_category);
 }
 
-void Sources::setLanguage(QString language)
+void SourcesAPI::setLanguage(QString language)
 {
     if (m_language == language)
         return;
@@ -65,7 +65,7 @@ void Sources::setLanguage(QString language)
     emit languageChanged(m_language);
 }
 
-void Sources::handleRestResponse(const QJsonObject& json)
+void SourcesAPI::handleRestResponse(const QJsonObject& json)
 {
     Q_ASSERT(!json.empty());
     m_sources.clear();
