@@ -14,6 +14,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         src/APIHandler/RestClient.cpp \
+        src/Application.cpp \
         src/Dispatcher.cpp \
         src/main.cpp
 
@@ -33,4 +34,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     src/APIHandler/RestClient.h \
+    src/Application.h \
     src/Dispatcher.h
