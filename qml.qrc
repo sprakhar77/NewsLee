@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/main.qml</file>
+        <file>qml/Home/Home.qml</file>
+        <file>qml/News/News.qml</file>
     </qresource>
 </RCC>
