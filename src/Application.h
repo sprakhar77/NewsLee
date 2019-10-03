@@ -7,6 +7,7 @@ class Application : QObject {
     Q_OBJECT
 public:
     explicit Application(QObject* parent = nullptr);
+    void registerQMLTypes();
     bool initialize();
 
 private:

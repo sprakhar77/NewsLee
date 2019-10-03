@@ -1,10 +1,10 @@
 #include "Dispatcher.h"
 
-#include "APIHandler/RestClient.h"
+#include <src/APIHandler/RestClient.h>
 
 Dispatcher::Dispatcher(QObject* parent)
     : QObject(parent)
-    , m_restClient()
+    , m_restClient{ new RestClient() }
 {
 }
 
