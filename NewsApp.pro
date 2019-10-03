@@ -13,9 +13,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        src/APIHandler/Response/Article.cpp \
-        src/APIHandler/Response/Source.cpp \
-        src/APIHandler/RestClient.cpp \
+        src/RestHandle/Request/Everything.cpp \
+        src/RestHandle/Request/Sources.cpp \
+        src/RestHandle/Request/Trending.cpp \
+        src/RestHandle/Response/Article.cpp \
+        src/RestHandle/Response/Source.cpp \
+        src/RestHandle/Request/RestClient/RestClient.cpp \
         src/Application.cpp \
         src/Dispatcher.cpp \
         src/main.cpp
@@ -35,8 +38,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    src/APIHandler/Response/Article.h \
-    src/APIHandler/Response/Source.h \
-    src/APIHandler/RestClient.h \
+    src/RestHandle/Request/Everything.h \
+    src/RestHandle/Request/Sources.h \
+    src/RestHandle/Request/Trending.h \
+    src/RestHandle/Response/Article.h \
+    src/RestHandle/Response/Source.h \
+    src/RestHandle/Request/RestClient/RestClient.h \
     src/Application.h \
     src/Dispatcher.h

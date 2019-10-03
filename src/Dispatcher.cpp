@@ -1,6 +1,6 @@
 #include "Dispatcher.h"
 
-#include <src/APIHandler/RestClient.h>
+#include <src/RestHandle/Request/RestClient/RestClient.h>
 
 Dispatcher::Dispatcher(QObject* parent)
     : QObject(parent)
