@@ -1,14 +1,12 @@
 #include "Dispatcher.h"
 
-#include <src/RestHandle/Request/RestClient/RestClient.h>
-
 Dispatcher::Dispatcher(QObject* parent)
     : QObject(parent)
-    , m_restClient{ new RestClient() }
+    , m_requestBackend{ new RequestBackend(this) }
 {
 }
 
-RestClient* Dispatcher::restClient() const
+RequestBackend* Dispatcher::requestBackend() const
 {
-    return m_restClient;
+    return m_requestBackend;
 }

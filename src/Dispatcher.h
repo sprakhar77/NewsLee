@@ -1,17 +1,15 @@
-#include <QObject>
-
-class RestClient;
+#include <src/RequestBackend.h>
 
 class Dispatcher : public QObject {
     Q_OBJECT
 
-    Q_PROPERTY(RestClient* restClient READ restClient CONSTANT)
+    Q_PROPERTY(RequestBackend* requestBackend READ requestBackend CONSTANT)
 
 public:
     explicit Dispatcher(QObject* parent = nullptr);
 
-    RestClient* restClient() const;
+    RequestBackend* requestBackend() const;
 
 private:
-    RestClient* m_restClient{ nullptr };
+    RequestBackend* m_requestBackend{ nullptr };
 };

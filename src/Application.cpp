@@ -1,7 +1,6 @@
 #include "Application.h"
 
 #include <src/Dispatcher.h>
-#include <src/RestHandle/Request/RestClient/RestClient.h>
 
 #include <QQmlContext>
 

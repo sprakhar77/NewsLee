@@ -1,3 +1,5 @@
+#pragma once
+
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QObject>
@@ -9,6 +11,9 @@ public:
     explicit RestClient(QObject* parent = nullptr);
 
     Q_INVOKABLE void sendRequest();
+
+signals:
+    void responseRecieved(const QJsonObject& json);
 
 private slots:
     void onDataReadReady();
