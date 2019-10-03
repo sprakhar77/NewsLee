@@ -21,67 +21,67 @@ namespace JsonKeys {
 }
 }
 
-Article::Article(QJsonObject json)
+Article::Article(const QJsonObject& json)
     : m_json(json)
 {
 }
 
-bool Article::isComplete()
+bool Article::isComplete() const
 {
     return !m_json.isEmpty();
 }
 
-QString Article::sourceId()
+QString Article::sourceId() const
 {
     Q_ASSERT(isComplete());
     const QJsonObject source = m_json.value(JsonKeys::ARTICLE_SOURCE).toObject();
     return source.value(QLatin1String(JsonKeys::SOURCE::ARTICLE_SOURCE_ID)).toString();
 }
 
-QString Article::sourceName()
+QString Article::sourceName() const
 {
     Q_ASSERT(isComplete());
     const QJsonObject source = m_json.value(JsonKeys::ARTICLE_SOURCE).toObject();
     return source.value(QLatin1String(JsonKeys::SOURCE::ARTICLE_SOURCE_NAME)).toString();
 }
 
-QString Article::author()
+QString Article::author() const
 {
     Q_ASSERT(isComplete());
     return m_json.value(QLatin1String(JsonKeys::ARTICLE_AUTHOR)).toString();
 }
 
-QString Article::title()
+QString Article::title() const
 {
     Q_ASSERT(isComplete());
     return m_json.value(QLatin1String(JsonKeys::ARTICLE_TITLE)).toString();
 }
 
-QString Article::description()
+QString Article::description() const
 {
     Q_ASSERT(isComplete());
     return m_json.value(QLatin1String(JsonKeys::ARTICLE_DESCRIPTION)).toString();
 }
 
-QUrl Article::url()
+QUrl Article::url() const
 {
     Q_ASSERT(isComplete());
     return QUrl(m_json.value(QLatin1String(JsonKeys::ARTICLE_URL)).toString());
 }
 
-QUrl Article::urlToImage()
+QUrl Article::urlToImage() const
 {
     Q_ASSERT(isComplete());
     return QUrl(m_json.value(QLatin1String(JsonKeys::ARTICLE_URL_TO_IMAGE)).toString());
 }
 
-QDateTime Article::publishedAt()
+QDateTime Article::publishedAt() const
 {
     Q_ASSERT(isComplete());
     return QDateTime::fromString(m_json.value(QLatin1String(JsonKeys::ARTICLE_PUBLISHED_AT)).toString(), Qt::ISODate);
 }
 
-QString Article::content()
+QString Article::content() const
 {
     Q_ASSERT(isComplete());
     return m_json.value(QLatin1String(JsonKeys::ARTICLE_CONTENT)).toString();

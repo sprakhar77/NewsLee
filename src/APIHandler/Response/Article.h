@@ -6,19 +6,19 @@ class QDateTime;
 class Article {
 public:
     Article() = default;
-    explicit Article(QJsonObject json);
+    explicit Article(const QJsonObject& json);
 
-    bool isComplete();
+    bool isComplete() const;
 
-    QString sourceId();
-    QString sourceName();
-    QString author();
-    QString title();
-    QString description();
-    QUrl url();
-    QUrl urlToImage();
-    QDateTime publishedAt();
-    QString content();
+    QString sourceId() const;
+    QString sourceName() const;
+    QString author() const;
+    QString title() const;
+    QString description() const;
+    QUrl url() const;
+    QUrl urlToImage() const;
+    QDateTime publishedAt() const;
+    QString content() const;
 
 private:
     QJsonObject m_json;
