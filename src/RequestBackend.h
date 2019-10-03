@@ -16,6 +16,9 @@ public:
     SourcesAPI* sourcesAPI() const;
     TrendingAPI* trendingAPI() const;
 
+    Q_INVOKABLE void fetchSources();
+    Q_INVOKABLE void fetchTrending();
+
 public slots:
     void onSourcesChanged();
     void onTrendingNewsChanged();

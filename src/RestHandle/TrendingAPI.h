@@ -15,6 +15,7 @@ public:
     QString country() const;
     QString category() const;
     QVector<Article> trending() const;
+    void fetch();
 
 public slots:
     void setCountry(QString country);

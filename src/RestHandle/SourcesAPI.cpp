@@ -38,6 +38,11 @@ QVector<Source> SourcesAPI::sources() const
     return m_sources;
 }
 
+void SourcesAPI::fetch()
+{
+    m_restClient.sendRequest(QUrl(ApiEndpoint::URL_SOURCES));
+}
+
 void SourcesAPI::setCountry(QString country)
 {
     if (m_country == country)

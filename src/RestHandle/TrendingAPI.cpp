@@ -35,6 +35,11 @@ QVector<Article> TrendingAPI::trending() const
     return m_trending;
 }
 
+void TrendingAPI::fetch()
+{
+    m_restClient.sendRequest(QUrl(ApiEndpoint::URL_TRENDING));
+}
+
 void TrendingAPI::setCountry(QString country)
 {
     if (m_country == country)

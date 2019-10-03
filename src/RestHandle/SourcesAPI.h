@@ -17,6 +17,7 @@ public:
     QString category() const;
     QString language() const;
     QVector<Source> sources() const;
+    void fetch();
 
 public slots:
     void setCountry(QString country);

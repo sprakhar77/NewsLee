@@ -4,7 +4,7 @@ import QtQuick.Controls 2.5
 
 Window {
 
-    readonly property QtObject restClient: Dispatcher.restClient
+    readonly property QtObject backend: Dispatcher.requestBackend
 
     visible: true
     width: 640
@@ -21,7 +21,7 @@ Window {
             top: parent.top
             left: parent.left
             right: parent.right
-            bottom: fetchButton.top
+            bottom: fetchSources.top
             bottomMargin: 40
         }
          color: "pink"
@@ -36,7 +36,7 @@ Window {
 
     Button
     {
-        id: fetchButton
+        id: fetchSources
 
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
@@ -46,7 +46,21 @@ Window {
 
         onClicked:
         {
-            restClient.sendRequest();
+            backend.fetchSources();
+        }
+    }
+
+    Button
+    {
+        id: fetchTrending
+
+        anchors.left: fetchSources.right
+        width: 80
+        height: 80
+
+        onClicked:
+        {
+            backend.fetchTrending();
         }
     }
 }

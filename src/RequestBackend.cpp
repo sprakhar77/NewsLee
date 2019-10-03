@@ -26,6 +26,16 @@ TrendingAPI* RequestBackend::trendingAPI() const
     return m_trendingAPI;
 }
 
+void RequestBackend::fetchSources()
+{
+    m_sourcesAPI->fetch();
+}
+
+void RequestBackend::fetchTrending()
+{
+    m_trendingAPI->fetch();
+}
+
 void RequestBackend::onSourcesChanged()
 {
     const auto updatedSources = m_sourcesAPI->sources();

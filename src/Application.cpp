@@ -11,7 +11,10 @@ Application::Application(QObject* parent)
 
 void Application::registerQMLTypes()
 {
-    qmlRegisterType<RestClient>();
+    qmlRegisterType<RequestBackend>();
+    qmlRegisterType<TrendingAPI>();
+    qmlRegisterType<SourcesAPI>();
+    qmlRegisterType<EverythingAPI>();
 }
 
 bool Application::initialize()
