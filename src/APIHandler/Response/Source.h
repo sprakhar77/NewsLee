@@ -1,0 +1,4 @@
+class Source {
+public:
+    Source();
+};

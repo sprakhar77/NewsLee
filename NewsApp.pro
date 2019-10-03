@@ -13,6 +13,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        src/APIHandler/Response/Article.cpp \
+        src/APIHandler/Response/Source.cpp \
         src/APIHandler/RestClient.cpp \
         src/Application.cpp \
         src/Dispatcher.cpp \
@@ -33,6 +35,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    src/APIHandler/Response/Article.h \
+    src/APIHandler/Response/Source.h \
     src/APIHandler/RestClient.h \
     src/Application.h \
     src/Dispatcher.h

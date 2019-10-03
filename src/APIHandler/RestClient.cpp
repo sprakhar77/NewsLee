@@ -33,8 +33,7 @@ void RestClient::onRequestCompleted()
     if (m_reply->error()) {
         qDebug() << "There was an error to get the response" << m_reply->errorString();
     } else {
-        //        QJsonDocument jsonDocument = QJsonDocument::fromJson(*m_dataBuffer);
-        //        QJsonObject json = jsonDocument.object();
-        qDebug() << *m_dataBuffer;
+        QJsonDocument jsonDocument = QJsonDocument::fromJson(*m_dataBuffer);
+        QJsonObject json = jsonDocument.object();
     }
 }
