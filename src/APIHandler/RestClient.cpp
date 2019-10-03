@@ -5,6 +5,19 @@
 #include <QJsonObject>
 #include <QNetworkRequest>
 
+namespace {
+
+namespace HttpConstants {
+    const char* const HTTP_HEADER_AUTHORIZATION = "Authorization";
+    const char* const AUTHORIZATION_BEARER = "Bearer";
+    const char* const API_KEY = "f71b5d47b67744a0b30ab26ea713159e";
+}
+
+namespace Endpoints {
+    const char* const URL_TOP_HEADLINES = "https://newsapi.org/v2/top-headlines?country=us";
+}
+}
+
 RestClient::RestClient(QObject* parent)
     : QObject(parent)
     , m_networkAccessManager{ new QNetworkAccessManager(this) }
@@ -16,7 +29,9 @@ RestClient::RestClient(QObject* parent)
 void RestClient::sendRequest()
 {
     QNetworkRequest request;
-    request.setUrl(QUrl("https://newsapi.org/v2/top-headlines?country=us&apiKey=f71b5d47b67744a0b30ab26ea713159e"));
+    request.setUrl(QUrl(Endpoints::URL_TOP_HEADLINES));
+    request.setRawHeader(HttpConstants::HTTP_HEADER_AUTHORIZATION,
+        (QLatin1String(HttpConstants::AUTHORIZATION_BEARER) + QLatin1Char(' ') + HttpConstants::API_KEY).toUtf8());
 
     m_reply = m_networkAccessManager->get(request);
     connect(m_reply, &QIODevice::readyRead, this, &RestClient::onDataReadReady);
@@ -35,5 +50,6 @@ void RestClient::onRequestCompleted()
     } else {
         QJsonDocument jsonDocument = QJsonDocument::fromJson(*m_dataBuffer);
         QJsonObject json = jsonDocument.object();
+        qDebug() << *m_dataBuffer;
     }
 }
