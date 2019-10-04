@@ -1,21 +1,16 @@
 #include "SourcesAPI.h"
 
-#include <QJsonArray>
+#include <Qurl>
 
 namespace {
 namespace ApiEndpoint {
     const char* const URL_SOURCES = "https://newsapi.org/v2/sources";
 }
-namespace JsonKeys {
-    const char* const SOURCES = "sources";
-}
 }
 
 SourcesAPI::SourcesAPI(QObject* parent)
     : QObject(parent)
-    , m_restClient{ new RestClient() }
 {
-    QObject::connect(&m_restClient, &RestClient::responseRecieved, this, &SourcesAPI::handleRestResponse);
 }
 
 QString SourcesAPI::country() const
@@ -33,14 +28,10 @@ QString SourcesAPI::language() const
     return m_language;
 }
 
-QVector<Source> SourcesAPI::sources() const
+QUrl SourcesAPI::prepareRequest()
 {
-    return m_sources;
-}
-
-void SourcesAPI::fetch()
-{
-    m_restClient.sendRequest(QUrl(ApiEndpoint::URL_SOURCES));
+    // prepare the actual request here with all the query parameters
+    return QUrl(QLatin1String(ApiEndpoint::URL_SOURCES));
 }
 
 void SourcesAPI::setCountry(QString country)
@@ -68,15 +59,4 @@ void SourcesAPI::setLanguage(QString language)
 
     m_language = language;
     emit languageChanged(m_language);
-}
-
-void SourcesAPI::handleRestResponse(const QJsonObject& json)
-{
-    Q_ASSERT(!json.empty());
-    m_sources.clear();
-    const auto sources = json[QLatin1String(JsonKeys::SOURCES)].toArray();
-    for (const auto source : sources) {
-        m_sources.append(Source(source.toObject()));
-    }
-    emit sourcesChanged();
 }

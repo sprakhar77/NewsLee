@@ -1,6 +1,12 @@
 #include "Application.h"
 
+#include <src/Backend/CustomBackend.h>
+#include <src/Backend/SourcesBackend.h>
+#include <src/Backend/TrendingBackend.h>
 #include <src/Dispatcher.h>
+#include <src/RestHandle/Request/CustomAPI.h>
+#include <src/RestHandle/Request/SourcesAPI.h>
+#include <src/RestHandle/Request/TrendingAPI.h>
 
 #include <QQmlContext>
 
@@ -11,7 +17,12 @@ Application::Application(QObject* parent)
 
 void Application::registerQMLTypes()
 {
-    qmlRegisterType<RequestBackend>();
+    // Backends
+    qmlRegisterType<TrendingBackend>();
+    qmlRegisterType<SourcesBackend>();
+    qmlRegisterType<CustomBackend>();
+
+    // APIs
     qmlRegisterType<TrendingAPI>();
     qmlRegisterType<SourcesAPI>();
     qmlRegisterType<CustomAPI>();

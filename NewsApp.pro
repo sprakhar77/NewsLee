@@ -13,15 +13,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        src/RequestBackend.cpp \
-        src/RestHandle/CustomAPI.cpp \
+        src/Backend/CustomBackend.cpp \
+        src/Backend/SourcesBackend.cpp \
+        src/Backend/TrendingBackend.cpp \
+        src/RestHandle/Request/CustomAPI.cpp \
         src/RestHandle/Response/Article.cpp \
         src/RestHandle/Response/Source.cpp \
-        src/RestHandle/RestClient/RestClient.cpp \
+        src/RestHandle/RestClient.cpp \
         src/Application.cpp \
         src/Dispatcher.cpp \
-        src/RestHandle/SourcesAPI.cpp \
-        src/RestHandle/TrendingAPI.cpp \
+        src/RestHandle/Request/SourcesAPI.cpp \
+        src/RestHandle/Request/TrendingAPI.cpp \
         src/main.cpp
 
 RESOURCES += qml.qrc \
@@ -39,12 +41,14 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    src/RequestBackend.h \
-    src/RestHandle/CustomAPI.h \
+    src/Backend/CustomBackend.h \
+    src/Backend/SourcesBackend.h \
+    src/Backend/TrendingBackend.h \
+    src/RestHandle/Request/CustomAPI.h \
     src/RestHandle/Response/Article.h \
     src/RestHandle/Response/Source.h \
-    src/RestHandle/RestClient/RestClient.h \
+    src/RestHandle/RestClient.h \
     src/Application.h \
     src/Dispatcher.h \
-    src/RestHandle/SourcesAPI.h \
-    src/RestHandle/TrendingAPI.h
+    src/RestHandle/Request/SourcesAPI.h \
+    src/RestHandle/Request/TrendingAPI.h

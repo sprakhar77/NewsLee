@@ -1,5 +1,4 @@
-#include <src/RestHandle/Response/Article.h>
-#include <src/RestHandle/RestClient/RestClient.h>
+#pragma once
 
 #include <QObject>
 
@@ -14,8 +13,7 @@ public:
 
     QString country() const;
     QString category() const;
-    QVector<Article> trendingArticles() const;
-    void fetch();
+    QUrl prepareRequest();
 
 public slots:
     void setCountry(QString country);
@@ -24,14 +22,8 @@ public slots:
 signals:
     void countryChanged(QString country);
     void categoryChanged(QString category);
-    void trendingNewsChanged();
-
-private slots:
-    void handleRestResponse(const QJsonObject& json);
 
 private:
-    RestClient m_restClient;
     QString m_country;
     QString m_category;
-    QVector<Article> m_trendingArticles;
 };

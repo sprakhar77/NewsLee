@@ -4,8 +4,6 @@ import QtQuick.Controls 2.5
 
 Window {
 
-    readonly property QtObject backend: Dispatcher.requestBackend
-
     visible: true
     width: 640
     height: 480
@@ -46,7 +44,6 @@ Window {
 
         onClicked:
         {
-            backend.fetchSources();
         }
     }
 
@@ -60,7 +57,6 @@ Window {
 
         onClicked:
         {
-            backend.fetchTrending();
         }
     }
 }
