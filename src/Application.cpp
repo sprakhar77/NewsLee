@@ -4,6 +4,8 @@
 #include <src/Backend/SourcesBackend.h>
 #include <src/Backend/TrendingBackend.h>
 #include <src/Dispatcher.h>
+#include <src/Model/ArticleModel.h>
+#include <src/Model/SourceModel.h>
 #include <src/RestHandle/Request/CustomAPI.h>
 #include <src/RestHandle/Request/SourcesAPI.h>
 #include <src/RestHandle/Request/TrendingAPI.h>
@@ -21,6 +23,10 @@ void Application::registerQMLTypes()
     qmlRegisterType<TrendingBackend>();
     qmlRegisterType<SourcesBackend>();
     qmlRegisterType<CustomBackend>();
+
+    //Models
+    qmlRegisterType<ArticleModel>();
+    //    qmlRegisterType<SourceModel>();
 
     // APIs
     qmlRegisterType<TrendingAPI>();

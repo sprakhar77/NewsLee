@@ -1,62 +1,59 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.5
+import QtQuick 2.11
+import QtQuick.Window 2.11
+import QtQuick.Controls 2.4
+import QtQuick.Layouts 1.3
 
 Window {
-
     visible: true
     width: 640
     height: 480
-    title: qsTr("Hello World")
-    color: "green"
+    title: qsTr("REST Client V2")
 
-    Rectangle
-    {
-        id: textArea
+    ColumnLayout{
+        anchors.fill: parent
+        spacing: 0
 
-        anchors
-        {
-            top: parent.top
-            left: parent.left
-            right: parent.right
-            bottom: fetchSources.top
-            bottomMargin: 40
+        ListView{
+            id: mListView
+            model: Dispatcher.trendingBackend.articleModel
+            delegate: Rectangle{
+                width: parent.width
+                height: textId.implicitHeight + 30
+                color: "beige"
+                border.color: "yellowgreen"
+                radius: 5
+
+                Text{
+                    id: textId
+                    width: parent.height
+                    height: parent.height
+                    anchors.centerIn: parent
+                    text: model.description
+                    font.pointSize: 13
+                    wrapMode: Text.WordWrap
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                }
+            }
+
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+
         }
-         color: "pink"
 
-        TextArea
-        {
-            anchors.fill: parent
-            readOnly: true
-            color: "gray"
+        SpinBox{
+            id: spinBoxId
+            Layout.fillWidth: true
+            value: 10
         }
-    }
 
-    Button
-    {
-        id: fetchSources
-
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 20
-        width: 80
-        height: 80
-
-        onClicked:
-        {
-        }
-    }
-
-    Button
-    {
-        id: fetchTrending
-
-        anchors.left: fetchSources.right
-        width: 80
-        height: 80
-
-        onClicked:
-        {
+        Button{
+            id : mButton1
+            text: "Fetch"
+            onClicked: {
+                Dispatcher.trendingBackend.fetch();
+            }
+            Layout.fillWidth: true
         }
     }
 }

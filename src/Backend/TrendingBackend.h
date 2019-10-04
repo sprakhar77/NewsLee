@@ -1,3 +1,4 @@
+#include <src/Model/ArticleModel.h>
 #include <src/RestHandle/Request/TrendingAPI.h>
 #include <src/RestHandle/Response/Article.h>
 #include <src/RestHandle/RestClient.h>
@@ -7,19 +8,21 @@
 class TrendingBackend : public QObject {
     Q_OBJECT
     Q_PROPERTY(TrendingAPI* trendingAPI READ trendingAPI CONSTANT)
+    Q_PROPERTY(ArticleModel* articleModel READ articleModel CONSTANT)
 
 public:
     explicit TrendingBackend(QObject* parent = nullptr);
 
     TrendingAPI* trendingAPI() const;
-    QVector<Article> trendingArticles() const;
+    ArticleModel* articleModel() const;
+
     Q_INVOKABLE void fetch();
 
 private slots:
     void onResponseRecieved(const QJsonObject& json);
 
 private:
-    TrendingAPI* m_trendingAPI;
+    TrendingAPI* m_trendingAPI{ nullptr };
     RestClient m_restClient;
-    QVector<Article> m_trendingArticles;
+    ArticleModel* m_articleModel{ nullptr };
 };

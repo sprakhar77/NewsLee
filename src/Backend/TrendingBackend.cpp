@@ -13,6 +13,7 @@ namespace JsonKeys {
 TrendingBackend::TrendingBackend(QObject* parent)
     : QObject(parent)
     , m_trendingAPI{ new TrendingAPI(this) }
+    , m_articleModel{ new ArticleModel(this) }
 {
     connect(&m_restClient, &RestClient::responseRecieved, this, &TrendingBackend::onResponseRecieved);
 }
@@ -22,14 +23,14 @@ TrendingAPI* TrendingBackend::trendingAPI() const
     return m_trendingAPI;
 }
 
-QVector<Article> TrendingBackend::trendingArticles() const
+ArticleModel* TrendingBackend::articleModel() const
 {
-    return m_trendingArticles;
+    return m_articleModel;
 }
 
 void TrendingBackend::fetch()
 {
-    Q_ASSERT(!m_trendingAPI);
+    Q_ASSERT(m_trendingAPI);
     const QUrl url = m_trendingAPI->prepareRequest();
     m_restClient.sendRequest(url);
 }
@@ -37,9 +38,10 @@ void TrendingBackend::fetch()
 void TrendingBackend::onResponseRecieved(const QJsonObject& json)
 {
     Q_ASSERT(!json.empty());
-    m_trendingArticles.clear();
+    m_articleModel->clearArticles();
     const auto trendingArray = json[QLatin1String(JsonKeys::ARTICLES)].toArray();
     for (const auto trending : trendingArray) {
-        m_trendingArticles.append(Article(trending.toObject()));
+        Article* article = new Article(trending.toObject());
+        m_articleModel->addArticle(article);
     }
 }
