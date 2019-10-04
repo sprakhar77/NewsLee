@@ -40,8 +40,7 @@ void TrendingBackend::onResponseRecieved(const QJsonObject& json)
     Q_ASSERT(!json.empty());
     m_articleModel->clearArticles();
     const auto trendingArray = json[QLatin1String(JsonKeys::ARTICLES)].toArray();
-    for (const auto trending : trendingArray) {
-        Article* article = new Article(trending.toObject());
-        m_articleModel->addArticle(article);
+    for (const auto trendingArticle : trendingArray) {
+        m_articleModel->addArticle(new Article(trendingArticle.toObject()));
     }
 }

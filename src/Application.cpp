@@ -26,7 +26,7 @@ void Application::registerQMLTypes()
 
     //Models
     qmlRegisterType<ArticleModel>();
-    //    qmlRegisterType<SourceModel>();
+    qmlRegisterType<SourceModel>();
 
     // APIs
     qmlRegisterType<TrendingAPI>();
