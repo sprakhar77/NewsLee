@@ -16,6 +16,8 @@ SOURCES += \
         src/Backend/CustomBackend.cpp \
         src/Backend/SourcesBackend.cpp \
         src/Backend/TrendingBackend.cpp \
+        src/Model/ArticleModel.cpp \
+        src/Model/SourceModel.cpp \
         src/RestHandle/Request/CustomAPI.cpp \
         src/RestHandle/Response/Article.cpp \
         src/RestHandle/Response/Source.cpp \
@@ -44,6 +46,8 @@ HEADERS += \
     src/Backend/CustomBackend.h \
     src/Backend/SourcesBackend.h \
     src/Backend/TrendingBackend.h \
+    src/Model/ArticleModel.h \
+    src/Model/SourceModel.h \
     src/RestHandle/Request/CustomAPI.h \
     src/RestHandle/Response/Article.h \
     src/RestHandle/Response/Source.h \
