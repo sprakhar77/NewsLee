@@ -25,6 +25,7 @@ void SourcesBackend::fetch()
 {
     Q_ASSERT(m_sourcesAPI);
     const QUrl url = m_sourcesAPI->prepareRequest();
+    m_restClient.sendRequest(url);
 }
 
 SourceModel* SourcesBackend::sourceModel() const

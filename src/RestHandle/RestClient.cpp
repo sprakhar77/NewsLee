@@ -59,4 +59,7 @@ void RestClient::onRequestCompleted()
         }
         emit responseRecieved(jsonReply);
     }
+
+    // clear the buffer for next request
+    m_dataBuffer->clear();
 }

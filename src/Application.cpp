@@ -9,6 +9,7 @@
 #include <src/RestHandle/Request/CustomAPI.h>
 #include <src/RestHandle/Request/SourcesAPI.h>
 #include <src/RestHandle/Request/TrendingAPI.h>
+#include <src/Utils/Enums.h>
 
 #include <QQmlContext>
 
@@ -32,6 +33,15 @@ void Application::registerQMLTypes()
     qmlRegisterType<TrendingAPI>();
     qmlRegisterType<SourcesAPI>();
     qmlRegisterType<CustomAPI>();
+
+    // Register Metadata
+    qmlRegisterUncreatableMetaObject(ApplicationEnums::staticMetaObject,
+        "com.Application.Backend",
+        1,
+        0,
+        "ApplicationEnums",
+        QLatin1String("Error: This is only an enum"));
+    qRegisterMetaType<ApplicationEnums::ApplicationPage>();
 }
 
 bool Application::initialize()

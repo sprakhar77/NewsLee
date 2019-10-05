@@ -3,57 +3,66 @@ import QtQuick.Window 2.11
 import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.3
 
+import com.Application.Backend 1.0
+
 Window {
     visible: true
     width: 640
     height: 480
-    title: qsTr("REST Client V2")
+    title: qsTr("News App")
 
-    ColumnLayout{
-        anchors.fill: parent
-        spacing: 0
+    Loader
+    {
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: pageSwapButtons.top
+        source: Dispatcher.currentPage
+    }
 
-        ListView{
-            id: mListView
-            model: Dispatcher.trendingBackend.articleModel
-            delegate: Rectangle{
-                width: parent.width
-                height: textId.implicitHeight + 30
-                color: "beige"
-                border.color: "yellowgreen"
-                radius: 5
+    RowLayout
+    {
+        id: pageSwapButtons
 
-                Text{
-                    id: textId
-                    width: parent.height
-                    height: parent.height
-                    anchors.centerIn: parent
-                    text: model.description
-                    font.pointSize: 13
-                    wrapMode: Text.WordWrap
-                    verticalAlignment: Text.AlignVCenter
-                    horizontalAlignment: Text.AlignHCenter
-                }
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+
+        Button
+        {
+            id: trending
+
+            height: 40
+            text: "Trending"
+
+            onClicked:
+            {
+                Dispatcher.setApplicationPage(ApplicationEnums.ApplicationPage.TRENDING)
             }
-
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-
         }
+        Button
+        {
+            id: sources
 
-        SpinBox{
-            id: spinBoxId
-            Layout.fillWidth: true
-            value: 10
-        }
+            height: 40
+            text:"Sources"
 
-        Button{
-            id : mButton1
-            text: "Fetch"
-            onClicked: {
-                Dispatcher.trendingBackend.fetch();
+            onClicked:
+            {
+                Dispatcher.setApplicationPage(ApplicationEnums.ApplicationPage.SOURCES)
             }
-            Layout.fillWidth: true
+        }
+        Button
+        {
+            id: custom
+
+            height: 40
+            text: "Custom"
+
+            onClicked:
+            {
+                Dispatcher.setApplicationPage(ApplicationEnums.ApplicationPage.CUSTOM)
+            }
         }
     }
 }

@@ -2,6 +2,8 @@
     <qresource prefix="/">
         <file>qml/main.qml</file>
         <file>qml/Home/Home.qml</file>
-        <file>qml/News/News.qml</file>
+        <file>qml/News/Trending.qml</file>
+        <file>qml/News/Sources.qml</file>
+        <file>qml/News/Custom.qml</file>
     </qresource>
 </RCC>

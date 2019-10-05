@@ -26,6 +26,7 @@ SOURCES += \
         src/Dispatcher.cpp \
         src/RestHandle/Request/SourcesAPI.cpp \
         src/RestHandle/Request/TrendingAPI.cpp \
+        src/Utils/Enums.cpp \
         src/main.cpp
 
 RESOURCES += qml.qrc \
@@ -55,4 +56,5 @@ HEADERS += \
     src/Application.h \
     src/Dispatcher.h \
     src/RestHandle/Request/SourcesAPI.h \
-    src/RestHandle/Request/TrendingAPI.h
+    src/RestHandle/Request/TrendingAPI.h \
+    src/Utils/Enums.h
