@@ -1,11 +1,28 @@
+#include <src/Model/ArticleModel.h>
+#include <src/RestHandle/Request/CustomAPI.h>
+#include <src/RestHandle/Response/Article.h>
+#include <src/RestHandle/RestClient.h>
+
 #include <QObject>
 
 class CustomBackend : public QObject {
     Q_OBJECT
+    Q_PROPERTY(CustomAPI* customAPI READ customAPI CONSTANT)
+    Q_PROPERTY(ArticleModel* articleModel READ articleModel CONSTANT)
+
 public:
     explicit CustomBackend(QObject* parent = nullptr);
 
-signals:
+    CustomAPI* customAPI() const;
+    ArticleModel* articleModel() const;
 
-public slots:
+    Q_INVOKABLE void fetch();
+
+private slots:
+    void onResponseRecieved(const QJsonObject& json);
+
+private:
+    CustomAPI* m_customAPI{ nullptr };
+    RestClient m_restClient;
+    ArticleModel* m_articleModel{ nullptr };
 };

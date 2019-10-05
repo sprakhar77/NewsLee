@@ -13,16 +13,6 @@ TrendingAPI::TrendingAPI(QObject* parent)
 {
 }
 
-QString TrendingAPI::country() const
-{
-    return m_country;
-}
-
-QString TrendingAPI::category() const
-{
-    return m_category;
-}
-
 QUrl TrendingAPI::prepareRequest()
 {
     // Prepare the actuall request with all the query parameters here
@@ -37,24 +27,6 @@ void TrendingAPI::addSource(const QString& source)
 QString TrendingAPI::searchkeyword() const
 {
     return m_searchkeyword;
-}
-
-void TrendingAPI::setCountry(QString country)
-{
-    if (m_country == country)
-        return;
-
-    m_country = country;
-    emit countryChanged();
-}
-
-void TrendingAPI::setCategory(QString category)
-{
-    if (m_category == category)
-        return;
-
-    m_category = category;
-    emit categoryChanged();
 }
 
 void TrendingAPI::setSearchkeyword(QString searchkeyword)

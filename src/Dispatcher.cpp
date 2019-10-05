@@ -11,7 +11,7 @@ Dispatcher::Dispatcher(QObject* parent)
     , m_sourcesBackend{ new SourcesBackend(this) }
     , m_customBackend{ new CustomBackend(this) }
     , m_applicationPage{ ApplicationEnums::ApplicationPage::START }
-    , m_currentPage{ QString(QLatin1String("qrc:/News/Custom.qml")) }
+    , m_currentPage{ QString(QLatin1String("qrc:/Home/Home.qml")) }
 {
 }
 
