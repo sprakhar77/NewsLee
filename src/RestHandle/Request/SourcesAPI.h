@@ -23,9 +23,9 @@ public slots:
     void setLanguage(QString language);
 
 signals:
-    void countryChanged(QString country);
-    void categoryChanged(QString category);
-    void languageChanged(QString language);
+    void countryChanged();
+    void categoryChanged();
+    void languageChanged();
 
 private:
     QString m_country;

@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Home/Home.qml</file>
+        <file>News/Trending.qml</file>
+        <file>News/Sources.qml</file>
+        <file>News/Custom.qml</file>
+    </qresource>
+</RCC>

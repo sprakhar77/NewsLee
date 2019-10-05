@@ -29,13 +29,23 @@ QUrl TrendingAPI::prepareRequest()
     return QUrl(QLatin1String(ApiEndpoint::URL_TRENDING));
 }
 
+void TrendingAPI::addSource(const QString& source)
+{
+    m_sourcesToFetchFrom.push_back(source);
+}
+
+QString TrendingAPI::searchkeyword() const
+{
+    return m_searchkeyword;
+}
+
 void TrendingAPI::setCountry(QString country)
 {
     if (m_country == country)
         return;
 
     m_country = country;
-    emit countryChanged(m_country);
+    emit countryChanged();
 }
 
 void TrendingAPI::setCategory(QString category)
@@ -44,5 +54,14 @@ void TrendingAPI::setCategory(QString category)
         return;
 
     m_category = category;
-    emit categoryChanged(m_category);
+    emit categoryChanged();
+}
+
+void TrendingAPI::setSearchkeyword(QString searchkeyword)
+{
+    if (m_searchkeyword == searchkeyword)
+        return;
+
+    m_searchkeyword = searchkeyword;
+    emit searchkeywordChanged();
 }

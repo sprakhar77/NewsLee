@@ -11,7 +11,7 @@ Dispatcher::Dispatcher(QObject* parent)
     , m_sourcesBackend{ new SourcesBackend(this) }
     , m_customBackend{ new CustomBackend(this) }
     , m_applicationPage{ ApplicationEnums::ApplicationPage::START }
-    , m_currentPage{ QString(QLatin1String("qrc:/qml/News/Custom.qml")) }
+    , m_currentPage{ QString(QLatin1String("qrc:/News/Custom.qml")) }
 {
 }
 
@@ -62,15 +62,15 @@ void Dispatcher::setApplicationPage(ApplicationEnums::ApplicationPage applicatio
         break;
     }
     case ApplicationEnums::ApplicationPage::TRENDING: {
-        setCurrentPage(QString(QLatin1String("qrc:/qml/News/Trending.qml")));
+        setCurrentPage(QString(QLatin1String("qrc:/News/Trending.qml")));
         break;
     }
     case ApplicationEnums::ApplicationPage::SOURCES: {
-        setCurrentPage(QString(QLatin1String("qrc:/qml/News/Sources.qml")));
+        setCurrentPage(QString(QLatin1String("qrc:/News/Sources.qml")));
         break;
     }
     case ApplicationEnums::ApplicationPage::CUSTOM: {
-        setCurrentPage(QString(QLatin1String("qrc:/qml/News/Custom.qml")));
+        setCurrentPage(QString(QLatin1String("qrc:/News/Custom.qml")));
         break;
     }
     }

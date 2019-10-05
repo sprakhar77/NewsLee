@@ -40,7 +40,7 @@ void SourcesAPI::setCountry(QString country)
         return;
 
     m_country = country;
-    emit countryChanged(m_country);
+    emit countryChanged();
 }
 
 void SourcesAPI::setCategory(QString category)
@@ -49,7 +49,7 @@ void SourcesAPI::setCategory(QString category)
         return;
 
     m_category = category;
-    emit categoryChanged(m_category);
+    emit categoryChanged();
 }
 
 void SourcesAPI::setLanguage(QString language)
@@ -58,5 +58,5 @@ void SourcesAPI::setLanguage(QString language)
         return;
 
     m_language = language;
-    emit languageChanged(m_language);
+    emit languageChanged();
 }

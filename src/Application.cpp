@@ -50,7 +50,7 @@ bool Application::initialize()
     registerQMLTypes();
 
     m_engine.rootContext()->setContextProperty("Dispatcher", m_dispatcher);
-    m_engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
+    m_engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (m_engine.rootObjects().empty()) {
         return false;
     }
