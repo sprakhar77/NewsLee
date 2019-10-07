@@ -1,5 +1,7 @@
 #pragma once
 
+#include <src/Model/CheckableModel/CheckableModelFactory.h>
+
 #include <QDateTime>
 #include <QObject>
 #include <QVector>
@@ -11,7 +13,10 @@ class CustomAPI : public QObject {
     Q_PROPERTY(QDateTime from READ from WRITE setFrom NOTIFY fromChanged)
     Q_PROPERTY(QDateTime to READ to WRITE setTo NOTIFY toChanged)
 
-    // Add Source, PageSize, SortBy and Language models to select from UI
+    Q_PROPERTY(CheckableModel* sources READ sources CONSTANT)
+    Q_PROPERTY(CheckableModel* pageSize READ pageSize CONSTANT)
+    Q_PROPERTY(CheckableModel* sortBy READ sortBy CONSTANT)
+    Q_PROPERTY(CheckableModel* language READ language CONSTANT)
 
 public:
     explicit CustomAPI(QObject* parent = nullptr);
@@ -22,7 +27,10 @@ public:
 
     QUrl prepareRequest();
 
-    Q_INVOKABLE void addSource(const QString& source);
+    CheckableModel* sources() const;
+    CheckableModel* pageSize() const;
+    CheckableModel* sortBy() const;
+    CheckableModel* language() const;
 
 public slots:
     void setSearchkeyword(QString searchkeyword);
@@ -36,7 +44,10 @@ signals:
 
 private:
     QString m_searchkeyword;
-    QVector<QString> m_sourcesToFetchFrom;
     QDateTime m_from;
     QDateTime m_to;
+    CheckableModel* m_sources{ nullptr };
+    CheckableModel* m_pageSize{ nullptr };
+    CheckableModel* m_sortBy{ nullptr };
+    CheckableModel* m_language{ nullptr };
 };

@@ -1,4 +1,4 @@
-#include "CustomBackend.h".h "
+#include "CustomBackend.h"
 
 #include <QJsonArray>
 

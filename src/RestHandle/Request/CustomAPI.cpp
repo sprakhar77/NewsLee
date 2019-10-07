@@ -11,6 +11,10 @@ namespace ApiEndpoint {
 CustomAPI::CustomAPI(QObject* parent)
     : QObject(parent)
 {
+    m_sources = CheckableModelFactory::create(CheckableModelFactory::ModelType::Source);
+    m_pageSize = CheckableModelFactory::create(CheckableModelFactory::ModelType::PageSize);
+    m_sortBy = CheckableModelFactory::create(CheckableModelFactory::ModelType::SortBy);
+    m_language = CheckableModelFactory::create(CheckableModelFactory::ModelType::Language);
 }
 
 QString CustomAPI::searchkeyword() const
@@ -24,9 +28,24 @@ QUrl CustomAPI::prepareRequest()
     return QUrl(QLatin1String(ApiEndpoint::URL_CUSTOM));
 }
 
-void CustomAPI::addSource(const QString& source)
+CheckableModel* CustomAPI::sources() const
 {
-    m_sourcesToFetchFrom.push_back(source);
+    return m_sources;
+}
+
+CheckableModel* CustomAPI::pageSize() const
+{
+    return m_pageSize;
+}
+
+CheckableModel* CustomAPI::sortBy() const
+{
+    return m_sortBy;
+}
+
+CheckableModel* CustomAPI::language() const
+{
+    return m_language;
 }
 
 QDateTime CustomAPI::from() const

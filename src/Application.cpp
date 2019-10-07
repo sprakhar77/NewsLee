@@ -5,6 +5,7 @@
 #include <src/Backend/TrendingBackend.h>
 #include <src/Dispatcher.h>
 #include <src/Model/ArticleModel.h>
+#include <src/Model/CheckableModel/CheckableModel.h>
 #include <src/Model/SourceModel.h>
 #include <src/RestHandle/Request/CustomAPI.h>
 #include <src/RestHandle/Request/SourcesAPI.h>
@@ -18,22 +19,8 @@ Application::Application(QObject* parent)
 {
 }
 
-void Application::registerQMLTypes()
+void Application::registerMetadata()
 {
-    // Backends
-    qmlRegisterType<TrendingBackend>();
-    qmlRegisterType<SourcesBackend>();
-    qmlRegisterType<CustomBackend>();
-
-    //Models
-    qmlRegisterType<ArticleModel>();
-    qmlRegisterType<SourceModel>();
-
-    // APIs
-    qmlRegisterType<TrendingAPI>();
-    qmlRegisterType<SourcesAPI>();
-    qmlRegisterType<CustomAPI>();
-
     // Register Metadata
     qmlRegisterUncreatableMetaObject(ApplicationEnums::staticMetaObject,
         "com.Application.Backend",
@@ -44,9 +31,28 @@ void Application::registerQMLTypes()
     qRegisterMetaType<ApplicationEnums::ApplicationPage>();
 }
 
+void Application::registerQMLTypes()
+{
+    // Backends
+    qmlRegisterType<TrendingBackend>();
+    qmlRegisterType<SourcesBackend>();
+    qmlRegisterType<CustomBackend>();
+
+    //Models
+    qmlRegisterType<ArticleModel>();
+    qmlRegisterType<SourceModel>();
+    qmlRegisterType<CheckableModel>();
+
+    // APIs
+    qmlRegisterType<TrendingAPI>();
+    qmlRegisterType<SourcesAPI>();
+    qmlRegisterType<CustomAPI>();
+}
+
 bool Application::initialize()
 {
     m_dispatcher = new Dispatcher();
+    registerMetadata();
     registerQMLTypes();
 
     m_engine.rootContext()->setContextProperty("Dispatcher", m_dispatcher);

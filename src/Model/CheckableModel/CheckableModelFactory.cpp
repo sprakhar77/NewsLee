@@ -23,6 +23,7 @@ CheckableModel* CheckableModelFactory::create(CheckableModelFactory::ModelType t
         fillPageSizes(checkableModel);
     }
     }
+    return checkableModel;
 }
 
 void CheckableModelFactory::fillCountries(CheckableModel* checkableModel)

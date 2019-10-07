@@ -24,6 +24,7 @@ public:
     QHash<int, QByteArray> roleNames() const override;
     bool setData(const QModelIndex& index, const QVariant& value, int role = Qt::EditRole) override;
 
+    void appendItem(CheckableItem* item);
     QVector<QString> extractAllCheckedItems();
 
 private:

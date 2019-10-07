@@ -73,6 +73,13 @@ bool CheckableModel::setData(const QModelIndex& index, const QVariant& value, in
     return true;
 }
 
+void CheckableModel::appendItem(CheckableItem* item)
+{
+    beginInsertRows({}, m_items.count(), m_items.count());
+    m_items.append(item);
+    endInsertRows();
+}
+
 QVector<QString> CheckableModel::extractAllCheckedItems()
 {
     QVector<QString> checkedItems;

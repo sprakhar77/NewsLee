@@ -1,3 +1,5 @@
+#pragma once
+
 #include <src/Model/CheckableModel/CheckableModel.h>
 
 class CheckableModelFactory {
