@@ -17,6 +17,9 @@ SOURCES += \
         src/Backend/SourcesBackend.cpp \
         src/Backend/TrendingBackend.cpp \
         src/Model/ArticleModel.cpp \
+        src/Model/CheckableModel/CheckableItem.cpp \
+        src/Model/CheckableModel/CheckableModel.cpp \
+        src/Model/CheckableModel/CheckableModelFactory.cpp \
         src/Model/SourceModel.cpp \
         src/RestHandle/Request/CustomAPI.cpp \
         src/RestHandle/Response/Article.cpp \
@@ -48,6 +51,9 @@ HEADERS += \
     src/Backend/SourcesBackend.h \
     src/Backend/TrendingBackend.h \
     src/Model/ArticleModel.h \
+    src/Model/CheckableModel/CheckableItem.h \
+    src/Model/CheckableModel/CheckableModel.h \
+    src/Model/CheckableModel/CheckableModelFactory.h \
     src/Model/SourceModel.h \
     src/RestHandle/Request/CustomAPI.h \
     src/RestHandle/Response/Article.h \
