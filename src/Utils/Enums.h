@@ -117,8 +117,6 @@ enum class SortBy
 Q_ENUM_NS(SortBy)
 QString sortByAsString(ApplicationEnums::SortBy sortBy);
 
-// For pageSizes
-QVector<QString>getAvailablePageSizes();
 }
 
 class Enums {

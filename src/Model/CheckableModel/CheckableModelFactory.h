@@ -9,8 +9,6 @@ public:
         Category,
         Language,
         SortBy,
-        PageSize,
-
     };
 
     static CheckableModel* create(ModelType type);
@@ -21,5 +19,4 @@ private:
     static void fillCategories(CheckableModel* checkableModel);
     static void fillLanguages(CheckableModel* checkableModel);
     static void fillSortBy(CheckableModel* checkableModel);
-    static void fillPageSizes(CheckableModel* checkableModel);
 };

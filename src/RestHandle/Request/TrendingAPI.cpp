@@ -11,9 +11,6 @@ namespace ApiEndpoint {
 TrendingAPI::TrendingAPI(QObject* parent)
     : QObject(parent)
 {
-    m_country = CheckableModelFactory::create(CheckableModelFactory::ModelType::Country);
-    m_category = CheckableModelFactory::create(CheckableModelFactory::ModelType::Category);
-    m_pageSize = CheckableModelFactory::create(CheckableModelFactory::ModelType::PageSize);
     m_sortBy = CheckableModelFactory::create(CheckableModelFactory::ModelType::SortBy);
 }
 
@@ -22,18 +19,7 @@ QUrl TrendingAPI::prepareRequest()
     //TODO: Prepare the actuall request with all the query parameters here
     return QUrl(QLatin1String(ApiEndpoint::URL_TRENDING));
 }
-CheckableModel* TrendingAPI::country() const
-{
-    return m_country;
-}
-CheckableModel* TrendingAPI::category() const
-{
-    return m_category;
-}
-CheckableModel* TrendingAPI::pageSize() const
-{
-    return m_pageSize;
-}
+
 CheckableModel* TrendingAPI::sortBy() const
 {
     return m_sortBy;
