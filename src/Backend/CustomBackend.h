@@ -16,7 +16,7 @@ public:
     CustomAPI* customAPI() const;
     ArticleModel* articleModel() const;
 
-    Q_INVOKABLE void fetch();
+    void fetch(const QVector<QString>&sources);
 
 private slots:
     void onResponseRecieved(const QJsonObject& json);

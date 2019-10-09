@@ -79,3 +79,13 @@ void SourceModel::addSource(Source* source)
     m_sources.append(source);
     endInsertRows();
 }
+
+QVector<QString> SourceModel::getSelectedSources()
+{
+    QVector<QString>selectedSources;
+    for(const auto source: m_sources)
+    {
+        selectedSources.push_back(source->id());
+    }
+    return selectedSources;
+}

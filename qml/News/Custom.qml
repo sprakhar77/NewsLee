@@ -44,7 +44,7 @@ ColumnLayout{
         id : mButton1
         text: "Fetch"
         onClicked: {
-            Dispatcher.customBackend.fetch();
+            Dispatcher.fetchCustom();
         }
         Layout.fillWidth: true
     }

@@ -6,21 +6,23 @@ CheckableModel* CheckableModelFactory::create(CheckableModelFactory::ModelType t
     switch (type) {
     case ModelType::Country: {
         fillCountries(checkableModel);
+        return checkableModel;
     }
     case ModelType::Category: {
         fillCategories(checkableModel);
+        return checkableModel;
     }
     case ModelType::Language: {
         fillLanguages(checkableModel);
-    }
-    case ModelType::Source: {
-        fillSources(checkableModel);
+        return checkableModel;
     }
     case ModelType::SortBy: {
         fillSortBy(checkableModel);
+        return checkableModel;
     }
     case ModelType::PageSize: {
         fillPageSizes(checkableModel);
+        return checkableModel;
     }
     }
     return checkableModel;
@@ -35,10 +37,6 @@ void CheckableModelFactory::fillCategories(CheckableModel* checkableModel)
 }
 
 void CheckableModelFactory::fillLanguages(CheckableModel* checkableModel)
-{
-}
-
-void CheckableModelFactory::fillSources(CheckableModel* checkableModel)
 {
 }
 

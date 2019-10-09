@@ -31,6 +31,10 @@ public:
     SourcesBackend* sourcesBackend() const;
     CustomBackend* customBackend() const;
 
+    Q_INVOKABLE void fetchSources();
+    Q_INVOKABLE void fetchTrending();
+    Q_INVOKABLE void fetchCustom();
+
 signals:
     void applicationPageChanged();
     void currentPageChanged();

@@ -28,6 +28,7 @@ public:
 
     void clearSources();
     void addSource(Source* source);
+    QVector<QString> getSelectedSources();
 
 private:
     QVector<Source*> m_sources;

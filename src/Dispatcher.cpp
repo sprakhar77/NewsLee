@@ -11,8 +11,31 @@ Dispatcher::Dispatcher(QObject* parent)
     , m_sourcesBackend{ new SourcesBackend(this) }
     , m_customBackend{ new CustomBackend(this) }
     , m_applicationPage{ ApplicationEnums::ApplicationPage::START }
-    , m_currentPage{ QString(QLatin1String("qrc:/Home/Home.qml")) }
+    , m_currentPage{ QString() }
 {
+}
+
+void Dispatcher::fetchSources()
+{
+    m_sourcesBackend->fetch();
+}
+
+void Dispatcher::fetchTrending()
+{
+    if (const auto sourcesModel = m_sourcesBackend->sourceModel())
+    {
+        const auto selectedSources = sourcesModel->getSelectedSources();
+        m_trendingBackend->fetch(selectedSources);
+    }
+}
+
+void Dispatcher::fetchCustom()
+{
+    if (const auto sourcesModel = m_sourcesBackend->sourceModel())
+    {
+        const auto selectedSources = sourcesModel->getSelectedSources();
+        m_customBackend->fetch(selectedSources);
+    }
 }
 
 TrendingBackend* Dispatcher::trendingBackend() const
@@ -59,6 +82,7 @@ void Dispatcher::setApplicationPage(ApplicationEnums::ApplicationPage applicatio
 
     switch (m_applicationPage) {
     case ApplicationEnums::ApplicationPage::START: {
+         setCurrentPage(QLatin1String("qrc:/Home/Home.qml"));
         break;
     }
     case ApplicationEnums::ApplicationPage::TRENDING: {

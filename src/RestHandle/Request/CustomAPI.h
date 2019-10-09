@@ -12,10 +12,10 @@ class CustomAPI : public QObject {
     Q_PROPERTY(QString searchkeyword READ searchkeyword WRITE setSearchkeyword NOTIFY searchkeywordChanged)
     Q_PROPERTY(QDateTime from READ from WRITE setFrom NOTIFY fromChanged)
     Q_PROPERTY(QDateTime to READ to WRITE setTo NOTIFY toChanged)
-
-    Q_PROPERTY(CheckableModel* sources READ sources CONSTANT)
     Q_PROPERTY(CheckableModel* pageSize READ pageSize CONSTANT)
     Q_PROPERTY(CheckableModel* sortBy READ sortBy CONSTANT)
+
+    //Unused
     Q_PROPERTY(CheckableModel* language READ language CONSTANT)
 
 public:
@@ -27,7 +27,6 @@ public:
 
     QUrl prepareRequest();
 
-    CheckableModel* sources() const;
     CheckableModel* pageSize() const;
     CheckableModel* sortBy() const;
     CheckableModel* language() const;
@@ -46,7 +45,6 @@ private:
     QString m_searchkeyword;
     QDateTime m_from;
     QDateTime m_to;
-    CheckableModel* m_sources{ nullptr };
     CheckableModel* m_pageSize{ nullptr };
     CheckableModel* m_sortBy{ nullptr };
     CheckableModel* m_language{ nullptr };
