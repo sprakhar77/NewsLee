@@ -11,6 +11,7 @@ enum class ApplicationPage;
 class Dispatcher : public QObject {
     Q_OBJECT
 
+    //TODO: At the start of the application fetch all the sources and populate the sources Model in all API's
     Q_PROPERTY(ApplicationEnums::ApplicationPage applicationPage READ applicationPage NOTIFY applicationPageChanged)
     Q_PROPERTY(QString currentPage READ currentPage NOTIFY currentPageChanged)
 
