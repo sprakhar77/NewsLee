@@ -1,68 +1,35 @@
-import QtQuick 2.11
-import QtQuick.Window 2.11
-import QtQuick.Controls 2.4
-import QtQuick.Layouts 1.3
+import Felgo 3.0
+import QtQuick 2.0
 
 import com.Application.Backend 1.0
 
-Window {
-    visible: true
-    width: 640
-    height: 480
-    title: qsTr("News App")
+App {
+    // You get free licenseKeys from https://felgo.com/licenseKey
+    // With a licenseKey you can:
+    //  * Publish your games & apps for the app stores
+    //  * Remove the Felgo Splash Screen or set a custom one (available with the Pro Licenses)
+    //  * Add plugins to monetize, analyze & improve your apps (available with the Pro Licenses)
+    //licenseKey: "<generate one from https://felgo.com/licenseKey>"
 
-    Loader
-    {
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: pageSwapButtons.top
-        source: Dispatcher.currentPage
-    }
+    NavigationStack {
 
-    RowLayout
-    {
-        id: pageSwapButtons
+        Page {
+            title: qsTr("Main Page")
 
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
+            Image {
+                source: "../assets/felgo-logo.png"
+                anchors.centerIn: parent
 
-        Button
-        {
-            id: trending
-
-            height: 40
-            text: "Trending"
-
-            onClicked:
-            {
-                Dispatcher.setApplicationPage(ApplicationEnums.ApplicationPage.TRENDING)
+                MouseArea
+                {
+                    anchors.fill: parent
+                    onClicked:
+                    {
+                        console.log(Dispatcher);
+                    }
+                }
             }
         }
-        Button
-        {
-            id: sources
 
-            height: 40
-            text:"Sources"
-
-            onClicked:
-            {
-                Dispatcher.setApplicationPage(ApplicationEnums.ApplicationPage.SOURCES)
-            }
-        }
-        Button
-        {
-            id: custom
-
-            height: 40
-            text: "Custom"
-
-            onClicked:
-            {
-                Dispatcher.setApplicationPage(ApplicationEnums.ApplicationPage.CUSTOM)
-            }
-        }
     }
 }
