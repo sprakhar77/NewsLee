@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Model/CheckableModel/CheckableModel.h>
+#include <src/Model/CheckableModel/CheckableModel.h>
 
 class CheckableModelFactory {
 public:

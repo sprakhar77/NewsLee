@@ -1,7 +1,7 @@
-#include <Model/ArticleModel.h>
-#include <RestHandle/Request/CustomAPI.h>
-#include <RestHandle/Response/Article.h>
-#include <RestHandle/RestClient.h>
+#include <src/Model/ArticleModel.h>
+#include <src/RestHandle/Request/CustomAPI.h>
+#include <src/RestHandle/Response/Article.h>
+#include <src/RestHandle/RestClient.h>
 
 #include <QObject>
 

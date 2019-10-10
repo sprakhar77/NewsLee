@@ -1,16 +1,16 @@
 #include "Application.h"
 
-#include <Backend/CustomBackend.h>
-#include <Backend/SourcesBackend.h>
-#include <Backend/TrendingBackend.h>
-#include <Dispatcher.h>
-#include <Model/ArticleModel.h>
-#include <Model/CheckableModel/CheckableModel.h>
-#include <Model/SourceModel.h>
-#include <RestHandle/Request/CustomAPI.h>
-#include <RestHandle/Request/SourcesAPI.h>
-#include <RestHandle/Request/TrendingAPI.h>
-#include <Utils/Enums.h>
+#include <src/Backend/CustomBackend.h>
+#include <src/Backend/SourcesBackend.h>
+#include <src/Backend/TrendingBackend.h>
+#include <src/Dispatcher.h>
+#include <src/Model/ArticleModel.h>
+#include <src/Model/CheckableModel/CheckableModel.h>
+#include <src/Model/SourceModel.h>
+#include <src/RestHandle/Request/CustomAPI.h>
+#include <src/RestHandle/Request/SourcesAPI.h>
+#include <src/RestHandle/Request/TrendingAPI.h>
+#include <src/Utils/Enums.h>
 
 #include <QQmlContext>
 

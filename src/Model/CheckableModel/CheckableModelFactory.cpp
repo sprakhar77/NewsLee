@@ -1,5 +1,5 @@
 #include "CheckableModelFactory.h"
-#include <Utils/Enums.h>
+#include <src/Utils/Enums.h>
 
 CheckableModel* CheckableModelFactory::create(CheckableModelFactory::ModelType type)
 {

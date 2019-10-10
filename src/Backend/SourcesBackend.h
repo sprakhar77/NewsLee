@@ -1,7 +1,7 @@
-#include <Model/SourceModel.h>
-#include <RestHandle/Request/SourcesAPI.h>
-#include <RestHandle/Response/Source.h>
-#include <RestHandle/RestClient.h>
+#include <src/Model/SourceModel.h>
+#include <src/RestHandle/Request/SourcesAPI.h>
+#include <src/RestHandle/Response/Source.h>
+#include <src/RestHandle/RestClient.h>
 
 #include <QObject>
 

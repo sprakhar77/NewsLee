@@ -1,35 +1,35 @@
 #pragma once
 
-#include <RestHandle/Response/Article.h>
+#include <src/RestHandle/Response/Source.h>
 
 #include <QAbstractListModel>
-class ArticleModel : public QAbstractListModel {
+class SourceModel : public QAbstractListModel {
     Q_OBJECT
 
 public:
     enum class ModelRole {
-        SourceId = Qt::UserRole + 1,
-        SourceName,
-        Author,
+        Id = Qt::UserRole + 1,
+        Name,
         Description,
         Url,
-        UrlToImage,
-        PublishedAt,
-        Content
+        Category,
+        Language,
+        Country
     };
     Q_ENUM(ModelRole)
 
-    ArticleModel(QObject* parent = nullptr);
-    ~ArticleModel() override;
+    SourceModel(QObject* parent = nullptr);
+    ~SourceModel() override;
 
     // Methods interfaced from QAbstractListModel
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
     QVariant data(const QModelIndex& index, int role) const override;
     QHash<int, QByteArray> roleNames() const override;
 
-    void clearArticles();
-    void addArticle(Article* article);
+    void clearSources();
+    void addSource(Source* source);
+    QVector<QString> getSelectedSources();
 
 private:
-    QVector<Article*> m_articles;
+    QVector<Source*> m_sources;
 };

@@ -18,15 +18,15 @@ PRODUCT_VERSION_CODE = 1
 # Not used if using Felgo Live
 PRODUCT_LICENSE_KEY = ""
 
-qmlFolder.source = qml
+qmlFolder.source = src/qml
 DEPLOYMENTFOLDERS += qmlFolder # comment for publishing
 
-assetsFolder.source = assets
+assetsFolder.source = resources/assets
 DEPLOYMENTFOLDERS += assetsFolder
 
 # Add more folders to ship with the application here
 
-RESOURCES += #    resources.qrc # uncomment for publishing
+RESOURCES += #    resources/resources.qrc # uncomment for publishing
 
 # NOTE: for PUBLISHING, perform the following steps:
 # 1. comment the DEPLOYMENTFOLDERS += qmlFolder line above, to avoid shipping your qml files with the application (instead they get compiled to the app binary)
@@ -40,59 +40,59 @@ RESOURCES += #    resources.qrc # uncomment for publishing
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += \
-        Backend/CustomBackend.cpp \
-        Backend/SourcesBackend.cpp \
-        Backend/TrendingBackend.cpp \
-        Model/ArticleModel.cpp \
-        Model/CheckableModel/CheckableItem.cpp \
-        Model/CheckableModel/CheckableModel.cpp \
-        Model/CheckableModel/CheckableModelFactory.cpp \
-        Model/SourceModel.cpp \
-        RestHandle/Request/CustomAPI.cpp \
-        RestHandle/Response/Article.cpp \
-        RestHandle/Response/Source.cpp \
-        RestHandle/RestClient.cpp \
-        Application.cpp \
-        Dispatcher.cpp \
-        RestHandle/Request/SourcesAPI.cpp \
-        RestHandle/Request/TrendingAPI.cpp \
-        Utils/Enums.cpp \
-        main.cpp
+        src/Backend/CustomBackend.cpp \
+        src/Backend/SourcesBackend.cpp \
+        src/Backend/TrendingBackend.cpp \
+        src/Model/ArticleModel.cpp \
+        src/Model/CheckableModel/CheckableItem.cpp \
+        src/Model/CheckableModel/CheckableModel.cpp \
+        src/Model/CheckableModel/CheckableModelFactory.cpp \
+        src/Model/SourceModel.cpp \
+        src/RestHandle/Request/CustomAPI.cpp \
+        src/RestHandle/Response/Article.cpp \
+        src/RestHandle/Response/Source.cpp \
+        src/RestHandle/RestClient.cpp \
+        src/Application.cpp \
+        src/Dispatcher.cpp \
+        src/RestHandle/Request/SourcesAPI.cpp \
+        src/RestHandle/Request/TrendingAPI.cpp \
+        src/Utils/Enums.cpp \
+        src/main.cpp
 
 
 android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
-    OTHER_FILES += android/AndroidManifest.xml       android/build.gradle
+    OTHER_FILES += resources/android/AndroidManifest.xml       android/build.gradle
 }
 
 ios {
-    QMAKE_INFO_PLIST = ios/Project-Info.plist
+    QMAKE_INFO_PLIST = resources/ios/Project-Info.plist
     OTHER_FILES += $$QMAKE_INFO_PLIST
 }
 
 # set application icons for win and macx
 win32 {
-    RC_FILE += win/app_icon.rc
+    RC_FILE += resources/win/app_icon.rc
 }
 macx {
-    ICON = macx/app_icon.icns
+    ICON = resources/macx/app_icon.icns
 }
 
 HEADERS += \
-    Backend/CustomBackend.h \
-    Backend/SourcesBackend.h \
-    Backend/TrendingBackend.h \
-    Model/ArticleModel.h \
-    Model/CheckableModel/CheckableItem.h \
-    Model/CheckableModel/CheckableModel.h \
-    Model/CheckableModel/CheckableModelFactory.h \
-    Model/SourceModel.h \
-    RestHandle/Request/CustomAPI.h \
-    RestHandle/Response/Article.h \
-    RestHandle/Response/Source.h \
-    RestHandle/RestClient.h \
-    Application.h \
-    Dispatcher.h \
-    RestHandle/Request/SourcesAPI.h \
-    RestHandle/Request/TrendingAPI.h \
-    Utils/Enums.h
+    src/Backend/CustomBackend.h \
+    src/Backend/SourcesBackend.h \
+    src/Backend/TrendingBackend.h \
+    src/Model/ArticleModel.h \
+    src/Model/CheckableModel/CheckableItem.h \
+    src/Model/CheckableModel/CheckableModel.h \
+    src/Model/CheckableModel/CheckableModelFactory.h \
+    src/Model/SourceModel.h \
+    src/RestHandle/Request/CustomAPI.h \
+    src/RestHandle/Response/Article.h \
+    src/RestHandle/Response/Source.h \
+    src/RestHandle/RestClient.h \
+    src/Application.h \
+    src/Dispatcher.h \
+    src/RestHandle/Request/SourcesAPI.h \
+    src/RestHandle/Request/TrendingAPI.h \
+    src/Utils/Enums.h

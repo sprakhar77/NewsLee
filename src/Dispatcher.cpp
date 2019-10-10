@@ -1,9 +1,9 @@
 #include "Dispatcher.h"
 
-#include <Backend/CustomBackend.h>
-#include <Backend/SourcesBackend.h>
-#include <Backend/TrendingBackend.h>
-#include <Utils/Enums.h>
+#include <src/Backend/CustomBackend.h>
+#include <src/Backend/SourcesBackend.h>
+#include <src/Backend/TrendingBackend.h>
+#include <src/Utils/Enums.h>
 
 Dispatcher::Dispatcher(QObject* parent)
     : QObject(parent)

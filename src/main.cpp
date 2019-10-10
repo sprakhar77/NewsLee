@@ -4,7 +4,7 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
 
-#include <Application.h>
+#include <src/Application.h>
 
 int main(int argc, char *argv[])
 {

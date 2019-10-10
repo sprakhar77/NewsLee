@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Model/CheckableModel/CheckableItem.h>
+#include <src/Model/CheckableModel/CheckableItem.h>
 
 #include <QAbstractListModel>
 

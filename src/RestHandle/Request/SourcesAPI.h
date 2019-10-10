@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Model/CheckableModel/CheckableModelFactory.h>
+#include <src/Model/CheckableModel/CheckableModelFactory.h>
 
 #include <QObject>
 
