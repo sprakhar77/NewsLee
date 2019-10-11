@@ -100,4 +100,9 @@ HEADERS += \
 DISTFILES += \
     src/qml/Custom/Custom.qml \
     src/qml/Trending/Trending.qml \
-    src/qml/Sources/Sources.qml
+    src/qml/Sources/Sources.qml \
+    src/qml/Sources/Category.qml \
+    src/qml/Sources/Language.qml \
+    src/qml/Sources/Information.qml \
+    src/qml/Trending/SelectionToolbar.qml \
+    src/qml/Custom/SelectionToolbar.qml
