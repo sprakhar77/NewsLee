@@ -22,8 +22,7 @@ void Dispatcher::fetchSources()
 
 void Dispatcher::fetchTrending()
 {
-    if (const auto sourcesModel = m_sourcesBackend->sourceModel())
-    {
+    if (const auto sourcesModel = m_sourcesBackend->sourceModel()) {
         const auto selectedSources = sourcesModel->getSelectedSources();
         m_trendingBackend->fetch(selectedSources);
     }
@@ -31,8 +30,7 @@ void Dispatcher::fetchTrending()
 
 void Dispatcher::fetchCustom()
 {
-    if (const auto sourcesModel = m_sourcesBackend->sourceModel())
-    {
+    if (const auto sourcesModel = m_sourcesBackend->sourceModel()) {
         const auto selectedSources = sourcesModel->getSelectedSources();
         m_customBackend->fetch(selectedSources);
     }
@@ -82,7 +80,7 @@ void Dispatcher::setApplicationPage(ApplicationEnums::ApplicationPage applicatio
 
     switch (m_applicationPage) {
     case ApplicationEnums::ApplicationPage::START: {
-         setCurrentPage(QLatin1String("qrc:/Home/Home.qml"));
+        setCurrentPage(QLatin1String("qrc:/Home/Home.qml"));
         break;
     }
     case ApplicationEnums::ApplicationPage::TRENDING: {

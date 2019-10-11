@@ -1,5 +1,6 @@
 import Felgo 3.0
 import QtQuick 2.0
+import QtQuick.Layouts 1.3
 
 /*
 
@@ -12,13 +13,40 @@ Trending {
 
 */
 
-ListPage {
+Page
+{
+    AppListView
+    {
+        anchors.fill: parent
+        model: Dispatcher.trendingBackend.articleModel
+        delegate: ColumnLayout
+        {
+            spacing: 10
+            AppImage
+            {
+                id: image
 
-    // TODO add your model
-    model: [{ type: "Fruits", text: "Banana" },
-        { type: "Fruits", text: "Apple" },
-        { type: "Vegetables", text: "Potato" }]
+                Layout.preferredWidth: screenWidth
+                Layout.maximumHeight: screenHeight/3
+                source: model.urlToImage
+                fillMode: Image.PreserveAspectFit
+            }
 
-    section.property: "type"
+            AppText
+            {
+                text: model.title
+                wrapMode: Text.WordWrap
+                Layout.preferredWidth: screenWidth
+            }
+
+            AppText
+            {
+                text: model.content
+                wrapMode: Text.WordWrap
+                Layout.preferredWidth: screenWidth
+            }
+
+        }
+    }
 
 }

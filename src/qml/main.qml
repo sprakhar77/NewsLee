@@ -1,5 +1,6 @@
 import Felgo 3.0
 import QtQuick 2.0
+import QtQuick.Window 2.2
 
 import 'Sources'
 import 'Trending'
@@ -8,10 +9,14 @@ import 'Custom'
 //import com.Application.Backend 1.0
 
 App {
+
+//    screenWidth: Screen.width
+//    screenHeight: Screen.height
+
     Navigation {
 
         // Comment to use a navigation drawer instead of tabs on Android
-        navigationMode: navigationModeTabs
+//        navigationMode: navigationModeTabs
 
         // TODO add your custom pages here
         NavigationItem {
@@ -21,6 +26,10 @@ App {
             Sources {
                 id: sources
             }
+            onSelected:
+            {
+//                Dispatcher.fetchSources();
+            }
         }
 
         NavigationItem {
@@ -29,6 +38,10 @@ App {
 
             Trending {
                 id: trending
+            }
+            onSelected:
+            {
+                Dispatcher.fetchTrending();
             }
 
         }

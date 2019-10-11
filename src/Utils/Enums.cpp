@@ -3,14 +3,13 @@
 
 Enums::Enums()
 {
-
 }
 
 namespace ApplicationEnums {
 QString countryAsString(ApplicationEnums::Country country)
 {
     const auto metaEnum = QMetaEnum::fromType<ApplicationEnums::Country>();
-    return QLatin1String(metaEnum.valueToKey(static_cast<int>(country)));
+    return QString(QLatin1String(metaEnum.valueToKey(static_cast<int>(country)))).replace("_", " ").toLower();
 }
 
 QString countryAsCountryCode(ApplicationEnums::Country country)
@@ -21,13 +20,13 @@ QString countryAsCountryCode(ApplicationEnums::Country country)
 QString categoryTypeAsString(ApplicationEnums::Category category)
 {
     const auto metaEnum = QMetaEnum::fromType<ApplicationEnums::Category>();
-    return QLatin1String(metaEnum.valueToKey(static_cast<int>(category)));
+    return QString(QLatin1String(metaEnum.valueToKey(static_cast<int>(category)))).replace("_", " ").toLower();
 }
 
 QString LanguageAsString(ApplicationEnums::Language language)
 {
     const auto metaEnum = QMetaEnum::fromType<ApplicationEnums::Language>();
-    return QLatin1String(metaEnum.valueToKey(static_cast<int>(language)));
+    return QString(QLatin1String(metaEnum.valueToKey(static_cast<int>(language)))).replace("_", " ").toLower();
 }
 
 QString LanguageAsLanguageCode(ApplicationEnums::Language language)
@@ -38,7 +37,6 @@ QString LanguageAsLanguageCode(ApplicationEnums::Language language)
 QString sortByAsString(ApplicationEnums::SortBy sortBy)
 {
     const auto metaEnum = QMetaEnum::fromType<ApplicationEnums::SortBy>();
-    return QLatin1String(metaEnum.valueToKey(static_cast<int>(sortBy)));
+    return QString(QLatin1String(metaEnum.valueToKey(static_cast<int>(sortBy)))).replace("_", " ").toLower();
 }
 }
-

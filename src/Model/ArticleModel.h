@@ -11,6 +11,7 @@ public:
         SourceId = Qt::UserRole + 1,
         SourceName,
         Author,
+        Title,
         Description,
         Url,
         UrlToImage,

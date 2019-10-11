@@ -1,24 +1,51 @@
 import Felgo 3.0
 import QtQuick 2.0
+import QtQuick.Controls 2.0 as QuickControls2
 
-/*
+Page
+{
+  title: "Sources"
 
-// EXAMPLE USAGE:
-// add the following piece of code inside your App { } to display the List Page
+  // tabs
+  AppTabBar {
+    id: appTabBar
+    contentContainer: swipeView
 
-Sources {
+    AppTabButton {
+      text: "Category"
+    }
+    AppTabButton {
+      text: "Country"
+    }
+    AppTabButton {
+      text: "Language"
+    }
+  }
 
+  // tab contents
+    QuickControls2.SwipeView {
+    id: swipeView
+    anchors.top: appTabBar.bottom
+    anchors.bottom: parent.bottom
+    width: parent.width
+    clip: true
+
+    TabSection
+    {
+        model: Dispatcher.sourcesBackend.sourcesAPI.category
+    }
+    TabSection
+    {
+        model: Dispatcher.sourcesBackend.sourcesAPI.country
+    }
+    TabSection
+    {
+       model: Dispatcher.sourcesBackend.sourcesAPI.language
+    }
+  }
+} // Page
+
+/*##^## Designer {
+    D{i:0;autoSize:true;height:480;width:640}
 }
-
-*/
-
-ListPage {
-
-    // TODO add your model
-    model: [{ type: "Fruits", text: "Banana" },
-        { type: "Fruits", text: "Apple" },
-        { type: "Vegetables", text: "Potato" }]
-
-    section.property: "type"
-
-}
+ ##^##*/

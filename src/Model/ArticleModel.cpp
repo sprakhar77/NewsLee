@@ -33,6 +33,9 @@ QVariant ArticleModel::data(const QModelIndex& index, int role) const
         case ModelRole::Author: {
             return article->author();
         }
+        case ModelRole::Title: {
+            return article->title();
+        }
         case ModelRole::Description: {
             return article->description();
         }
@@ -60,6 +63,7 @@ QHash<int, QByteArray> ArticleModel::roleNames() const
     roles[static_cast<int>(ModelRole::SourceId)] = "sourceId";
     roles[static_cast<int>(ModelRole::SourceName)] = "sourceName";
     roles[static_cast<int>(ModelRole::Author)] = "author";
+    roles[static_cast<int>(ModelRole::Title)] = "title";
     roles[static_cast<int>(ModelRole::Description)] = "description";
     roles[static_cast<int>(ModelRole::Url)] = "url";
     roles[static_cast<int>(ModelRole::UrlToImage)] = "urlToImage";
