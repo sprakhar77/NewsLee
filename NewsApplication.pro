@@ -96,3 +96,8 @@ HEADERS += \
     src/RestHandle/Request/SourcesAPI.h \
     src/RestHandle/Request/TrendingAPI.h \
     src/Utils/Enums.h
+
+DISTFILES += \
+    src/qml/Custom/Custom.qml \
+    src/qml/Trending/Trending.qml \
+    src/qml/Sources/Sources.qml
