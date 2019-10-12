@@ -15,9 +15,33 @@ Trending {
 
 Page
 {
+    SearchBar
+    {
+        id: searchBar
+        target: listView
+        pullEnabled: true
+        onAccepted:
+        {
+            console.log("search accepted: "+text)
+
+            // if the search bar is not empty, we prevent it from disappearing
+            if(text !== "")
+            {
+                searchBar.keepVisible = true
+                // update result
+            }
+            else
+            {
+                // initial settings
+                searchBar.keepVisible = false
+            }
+        }
+    }
+
     AppListView
     {
-        anchors.fill: parent
+        id: listView
+
         model: Dispatcher.trendingBackend.articleModel
         delegate: ColumnLayout
         {
@@ -76,8 +100,15 @@ Page
                 }
             }
         }
-    }
 
+//        PullToRefreshHandler
+//        {
+//            onRefresh:
+//            {
+//                Dispatcher.fetchTrending();
+//            }
+//        }
+    }
 }
 
 
