@@ -23,12 +23,11 @@ void Application::registerMetadata()
 {
     // Register Metadata
     qmlRegisterUncreatableMetaObject(ApplicationEnums::staticMetaObject,
-                                     "com.Application.Backend",
-                                     1,
-                                     0,
-                                     "ApplicationEnums",
-                                     QLatin1String("Error: This is only an enum"));
-    qRegisterMetaType<ApplicationEnums::ApplicationPage>();
+        "com.Application.Backend",
+        1,
+        0,
+        "ApplicationEnums",
+        QLatin1String("Error: This is only an enum"));
 }
 
 void Application::registerQMLTypes()
@@ -49,11 +48,10 @@ void Application::registerQMLTypes()
     qmlRegisterType<CustomAPI>();
 }
 
-void Application::initialize(QQmlApplicationEngine *engine)
+void Application::initialize(QQmlApplicationEngine* engine)
 {
     registerMetadata();
     registerQMLTypes();
     m_dispatcher = new Dispatcher();
     engine->rootContext()->setContextProperty("Dispatcher", m_dispatcher);
 }
-

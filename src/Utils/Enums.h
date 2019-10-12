@@ -5,14 +5,6 @@ namespace ApplicationEnums {
 Q_NAMESPACE
 Q_CLASSINFO("RegisterEnumClassesUnscoped", "false")
 
-enum class ApplicationPage {
-    START = 0,
-    TRENDING,
-    CUSTOM,
-    SOURCES
-};
-Q_ENUM_NS(ApplicationPage)
-
 enum class Country {
     UNITED_ARAB_EMIRATES = 0,
     ARGENTINA,
@@ -74,8 +66,7 @@ Q_ENUM_NS(Country)
 QString countryAsString(ApplicationEnums::Country country);
 QString countryAsCountryCode(ApplicationEnums::Country country);
 
-enum class Category
-{
+enum class Category {
     BUSINESS,
     ENTERTAINMENT,
     GENERAL,
@@ -87,8 +78,7 @@ enum class Category
 Q_ENUM_NS(Category)
 QString categoryTypeAsString(ApplicationEnums::Category category);
 
-enum class Language
-{
+enum class Language {
     ARABIC,
     GERMAN,
     ENGLISH,
@@ -107,8 +97,7 @@ Q_ENUM_NS(Language)
 QString LanguageAsString(ApplicationEnums::Language language);
 QString LanguageAsLanguageCode(ApplicationEnums::Language language);
 
-enum class SortBy
-{
+enum class SortBy {
     RELEVANCY,
     POPULARITY,
     PUBLISHED_AT,
@@ -116,7 +105,6 @@ enum class SortBy
 };
 Q_ENUM_NS(SortBy)
 QString sortByAsString(ApplicationEnums::SortBy sortBy);
-
 }
 
 class Enums {
