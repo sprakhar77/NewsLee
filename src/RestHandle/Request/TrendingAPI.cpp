@@ -25,16 +25,16 @@ CheckableModel* TrendingAPI::sortBy() const
     return m_sortBy;
 }
 
-QString TrendingAPI::searchkeyword() const
+QString TrendingAPI::searchKeyword() const
 {
-    return m_searchkeyword;
+    return m_searchKeyword;
 }
 
-void TrendingAPI::setSearchkeyword(QString searchkeyword)
+void TrendingAPI::setSearchKeyword(QString searchKeyword)
 {
-    if (m_searchkeyword == searchkeyword)
+    if (m_searchKeyword == searchKeyword)
         return;
 
-    m_searchkeyword = searchkeyword;
-    emit searchkeywordChanged();
+    m_searchKeyword = searchKeyword;
+    emit searchKeywordChanged();
 }

@@ -9,7 +9,7 @@
 class CustomAPI : public QObject {
     Q_OBJECT
 
-    Q_PROPERTY(QString searchkeyword READ searchkeyword WRITE setSearchkeyword NOTIFY searchkeywordChanged)
+    Q_PROPERTY(QString searchKeyword READ searchKeyword WRITE setSearchKeyword NOTIFY searchKeywordChanged)
     Q_PROPERTY(QDateTime from READ from WRITE setFrom NOTIFY fromChanged)
     Q_PROPERTY(QDateTime to READ to WRITE setTo NOTIFY toChanged)
     Q_PROPERTY(CheckableModel* sortBy READ sortBy CONSTANT)
@@ -17,7 +17,7 @@ class CustomAPI : public QObject {
 public:
     explicit CustomAPI(QObject* parent = nullptr);
 
-    QString searchkeyword() const;
+    QString searchKeyword() const;
     QDateTime from() const;
     QDateTime to() const;
     CheckableModel* sortBy() const;
@@ -25,17 +25,17 @@ public:
     QUrl prepareRequest();
 
 public slots:
-    void setSearchkeyword(QString searchkeyword);
+    void setSearchKeyword(QString searchKeyword);
     void setFrom(QDateTime from);
     void setTo(QDateTime to);
 
 signals:
-    void searchkeywordChanged();
+    void searchKeywordChanged();
     void fromChanged();
     void toChanged();
 
 private:
-    QString m_searchkeyword;
+    QString m_searchKeyword;
     QDateTime m_from;
     QDateTime m_to;
     CheckableModel* m_sortBy{ nullptr };

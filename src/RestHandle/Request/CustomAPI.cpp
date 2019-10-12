@@ -1,6 +1,7 @@
 #include "CustomAPI.h"
 
 #include <QUrl>
+#include <QUrlQuery>
 
 namespace {
 namespace ApiEndpoint {
@@ -14,9 +15,9 @@ CustomAPI::CustomAPI(QObject* parent)
     m_sortBy = CheckableModelFactory::create(CheckableModelFactory::ModelType::SortBy);
 }
 
-QString CustomAPI::searchkeyword() const
+QString CustomAPI::searchKeyword() const
 {
-    return m_searchkeyword;
+    return m_searchKeyword;
 }
 
 QUrl CustomAPI::prepareRequest()
@@ -40,13 +41,13 @@ QDateTime CustomAPI::to() const
     return m_to;
 }
 
-void CustomAPI::setSearchkeyword(QString searchkeyword)
+void CustomAPI::setSearchKeyword(QString searchKeyword)
 {
-    if (m_searchkeyword == searchkeyword)
+    if (m_searchKeyword == searchKeyword)
         return;
 
-    m_searchkeyword = searchkeyword;
-    emit searchkeywordChanged();
+    m_searchKeyword = searchKeyword;
+    emit searchKeywordChanged();
 }
 
 void CustomAPI::setFrom(QDateTime from)

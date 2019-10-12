@@ -8,25 +8,24 @@
 class TrendingAPI : public QObject {
     Q_OBJECT
 
-    Q_PROPERTY(QString searchkeyword READ searchkeyword WRITE setSearchkeyword NOTIFY searchkeywordChanged)
+    Q_PROPERTY(QString searchKeyword READ searchKeyword WRITE setSearchKeyword NOTIFY searchKeywordChanged)
     Q_PROPERTY(CheckableModel* sortBy READ sortBy CONSTANT)
 
 public:
     explicit TrendingAPI(QObject* parent = nullptr);
 
-    QString searchkeyword() const;
+    QString searchKeyword() const;
     CheckableModel* sortBy() const;
 
     QUrl prepareRequest();
 
-
 public slots:
-    void setSearchkeyword(QString searchkeyword);
+    void setSearchKeyword(QString searchKeyword);
 
 signals:
-    void searchkeywordChanged();
+    void searchKeywordChanged();
 
 private:
-    QString m_searchkeyword;
+    QString m_searchKeyword;
     CheckableModel* m_sortBy{ nullptr };
 };

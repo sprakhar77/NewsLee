@@ -4,45 +4,50 @@ import QtQuick.Controls 2.0 as QuickControls2
 
 Page
 {
-  title: "Sources"
+    title: "Sources"
 
-  // tabs
-  AppTabBar {
-    id: appTabBar
-    contentContainer: swipeView
-
-    AppTabButton {
-      text: "Category"
-    }
-    AppTabButton {
-      text: "Country"
-    }
-    AppTabButton {
-      text: "Language"
-    }
-  }
-
-  // tab contents
-    QuickControls2.SwipeView {
-    id: swipeView
-    anchors.top: appTabBar.bottom
-    anchors.bottom: parent.bottom
-    width: parent.width
-    clip: true
-
-    TabSection
+    // tabs
+    AppTabBar
     {
-        model: Dispatcher.sourcesBackend.sourcesAPI.category
+        id: appTabBar
+        contentContainer: swipeView
+
+        AppTabButton
+        {
+            text: "Category"
+        }
+        AppTabButton
+        {
+            text: "Country"
+        }
+        AppTabButton
+        {
+            text: "Language"
+        }
     }
-    TabSection
+
+    // tab contents
+    QuickControls2.SwipeView
     {
-        model: Dispatcher.sourcesBackend.sourcesAPI.country
+        id: swipeView
+        anchors.top: appTabBar.bottom
+        anchors.bottom: parent.bottom
+        width: parent.width
+        clip: true
+
+        TabSection
+        {
+            model: Dispatcher.sourcesBackend.sourcesAPI.category
+        }
+        TabSection
+        {
+            model: Dispatcher.sourcesBackend.sourcesAPI.country
+        }
+        TabSection
+        {
+            model: Dispatcher.sourcesBackend.sourcesAPI.language
+        }
     }
-    TabSection
-    {
-       model: Dispatcher.sourcesBackend.sourcesAPI.language
-    }
-  }
 } // Page
 
 /*##^## Designer {

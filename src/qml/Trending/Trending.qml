@@ -15,6 +15,10 @@ Trending {
 
 Page
 {
+    id: control
+
+    title: "Trending"
+
     SearchBar
     {
         id: searchBar
@@ -48,8 +52,9 @@ Page
 
             Rectangle
             {
-                Layout.preferredHeight: screenHeight
+                Layout.preferredHeight: screenHeight - 100
                 Layout.preferredWidth: screenWidth
+
                 AppImage
                 {
                     id: image
@@ -91,23 +96,31 @@ Page
                     wrapMode: Text.WordWrap
                 }
 
-                Rectangle
+                SimpleButton
                 {
                     anchors.bottom: parent.bottom
-                    color: "black"
+                    color: "#dcdcdc"
                     width: parent.width
-                    height: 2
+                    height: 40
+                    text: "Click here to read full article"
+                    textColor: "white"
+                    pixelSize: 18
+                    hoveredLighterFactor: 0.8
+                    onClicked:
+                    {
+                        nativeUtils.openUrl(model.url)
+                    }
                 }
             }
         }
 
-//        PullToRefreshHandler
-//        {
-//            onRefresh:
-//            {
-//                Dispatcher.fetchTrending();
-//            }
-//        }
+        PullToRefreshHandler
+        {
+            onRefresh:
+            {
+                Dispatcher.fetchTrending();
+            }
+        }
     }
 }
 

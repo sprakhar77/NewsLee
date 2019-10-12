@@ -8,52 +8,58 @@ import 'Custom'
 
 //import com.Application.Backend 1.0
 
-App {
+App
+{
 
-//    screenWidth: Screen.width
-//    screenHeight: Screen.height
+    //    screenWidth: Screen.width
+    //    screenHeight: Screen.height
 
-    Navigation {
+    Navigation
+    {
 
+        id: navigation
         // Comment to use a navigation drawer instead of tabs on Android
-//        navigationMode: navigationModeTabs
+
+       NavigationItem
+        {
+            title: qsTr("Trending")
+            icon: IconType.bolt
+
+            NavigationStack
+            {
+
+                Trending
+                {
+                    id: trending
+                }
+            }
+        }
+
+        NavigationItem
+        {
+            title: qsTr("Custom")
+            icon: IconType.search
+            NavigationStack
+            {
+                Custom
+                {
+                    id: custom
+                }
+            }
+        }
 
         // TODO add your custom pages here
-        NavigationItem {
+        NavigationItem
+        {
             title: qsTr("Sources")
-            icon: IconType.square
-
-            Sources {
-                id: sources
-            }
-            onSelected:
+            icon: IconType.book
+            NavigationStack
             {
-//                Dispatcher.fetchSources();
+                Sources
+                {
+                    id: sources
+                }
             }
-        }
-
-        NavigationItem {
-            title: qsTr("Trending")
-            icon: IconType.circle
-
-            Trending {
-                id: trending
-            }
-            onSelected:
-            {
-                Dispatcher.fetchTrending();
-            }
-
-        }
-
-        NavigationItem {
-            title: qsTr("Custom")
-            icon: IconType.circle
-
-            Custom {
-                id: custom
-            }
-
         }
     }
 
