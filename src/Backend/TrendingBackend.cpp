@@ -28,11 +28,12 @@ ArticleModel* TrendingBackend::articleModel() const
     return m_articleModel;
 }
 
-void TrendingBackend::fetch(const QVector<QString>&sources)
+void TrendingBackend::fetch(const QVector<QString>& sources)
 {
     Q_ASSERT(m_trendingAPI);
     const QUrl url = m_trendingAPI->prepareRequest();
     //TODO: Add sources to query
+    emit modelUpdateStarted();
     m_restClient.sendRequest(url);
 }
 
@@ -44,4 +45,5 @@ void TrendingBackend::onResponseRecieved(const QJsonObject& json)
     for (const auto trendingArticle : trendingArray) {
         m_articleModel->addArticle(new Article(trendingArticle.toObject()));
     }
+    emit modelUpdateFinished();
 }

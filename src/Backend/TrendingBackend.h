@@ -16,10 +16,15 @@ public:
     TrendingAPI* trendingAPI() const;
     ArticleModel* articleModel() const;
 
-    void fetch(const QVector<QString>&sources);
+    void fetch(const QVector<QString>& sources);
+
+signals:
+    void modelUpdateStarted();
+    void modelUpdateFinished();
 
 private slots:
-    void onResponseRecieved(const QJsonObject& json);
+    void
+    onResponseRecieved(const QJsonObject& json);
 
 private:
     TrendingAPI* m_trendingAPI{ nullptr };

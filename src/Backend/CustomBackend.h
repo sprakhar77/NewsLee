@@ -16,7 +16,11 @@ public:
     CustomAPI* customAPI() const;
     ArticleModel* articleModel() const;
 
-    void fetch(const QVector<QString>&sources);
+    void fetch(const QVector<QString>& sources);
+
+signals:
+    void modelUpdateStarted();
+    void modelUpdateFinished();
 
 private slots:
     void onResponseRecieved(const QJsonObject& json);

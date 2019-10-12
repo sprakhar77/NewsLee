@@ -5,13 +5,14 @@
 
 namespace {
 namespace ApiEndpoint {
-    const char* const URL_CUSTOM = "https://newsapi.org/v2/everything?q=bitcoin";
+    const char* const URL_CUSTOM = "https://newsapi.org/v2/everything";
 }
 }
 
 CustomAPI::CustomAPI(QObject* parent)
     : QObject(parent)
 {
+    m_searchKeyword = QString(QLatin1String("bitcoin"));
     m_sortBy = CheckableModelFactory::create(CheckableModelFactory::ModelType::SortBy);
 }
 
@@ -22,8 +23,13 @@ QString CustomAPI::searchKeyword() const
 
 QUrl CustomAPI::prepareRequest()
 {
-    //TODO: Prepare the actuall request with all the query parameters here
-    return QUrl(QLatin1String(ApiEndpoint::URL_CUSTOM));
+    QUrl url = QUrl(QLatin1String(ApiEndpoint::URL_CUSTOM));
+    if (!m_searchKeyword.isEmpty()) {
+        QUrlQuery query;
+        query.addQueryItem("q", m_searchKeyword);
+        url.setQuery(query);
+    }
+    return url;
 }
 
 CheckableModel* CustomAPI::sortBy() const

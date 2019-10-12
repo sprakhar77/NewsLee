@@ -32,6 +32,8 @@ Page
             if(text !== "")
             {
                 searchBar.keepVisible = true
+                Dispatcher.trendingBackend.trendingAPI.searchKeyword = text
+                Dispatcher.fetchTrending()
                 // update result
             }
             else
@@ -52,7 +54,7 @@ Page
 
             Rectangle
             {
-                Layout.preferredHeight: screenHeight - 100
+                Layout.preferredHeight: screenHeight - 140
                 Layout.preferredWidth: screenWidth
 
                 AppImage
@@ -119,6 +121,31 @@ Page
             onRefresh:
             {
                 Dispatcher.fetchTrending();
+            }
+        }
+
+        AppActivityIndicator
+        {
+            id: activiyIndicator
+
+            animating: false
+            hidesWhenStopped: true
+            anchors.centerIn: parent
+
+        }
+
+        Connections
+        {
+            target: Dispatcher.trendingBackend
+
+            onModelUpdateStarted:
+            {
+                activiyIndicator.startAnimating()
+            }
+
+            onModelUpdateFinished:
+            {
+                activiyIndicator.stopAnimating()
             }
         }
     }

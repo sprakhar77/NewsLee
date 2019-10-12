@@ -1,6 +1,7 @@
 #include "TrendingAPI.h"
 
 #include <QUrl>
+#include <QUrlQuery>
 
 namespace {
 namespace ApiEndpoint {
@@ -16,8 +17,12 @@ TrendingAPI::TrendingAPI(QObject* parent)
 
 QUrl TrendingAPI::prepareRequest()
 {
-    //TODO: Prepare the actuall request with all the query parameters here
-    return QUrl(QLatin1String(ApiEndpoint::URL_TRENDING));
+    QUrl url = QUrl(QLatin1String(ApiEndpoint::URL_TRENDING));
+    QUrlQuery query;
+    if (!m_searchKeyword.isEmpty()) {
+        query.addQueryItem("q", m_searchKeyword);
+    }
+    return url;
 }
 
 CheckableModel* TrendingAPI::sortBy() const

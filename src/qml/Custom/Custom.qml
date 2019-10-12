@@ -31,14 +31,12 @@ Page
             // if the search bar is not empty, we prevent it from disappearing
             if(text !== "")
             {
-                searchBar.keepVisible = true
+                Dispatcher.customBackend.customAPI.searchKeyword = text
+                Dispatcher.fetchCustom()
+                searchBar.keepVisible = false
                 // update result
             }
-            else
-            {
-                // initial settings
-                searchBar.keepVisible = false
-            }
+            searchBar.keepVisible = false
         }
     }
 
@@ -52,7 +50,7 @@ Page
 
             Rectangle
             {
-                Layout.preferredHeight: screenHeight - 100
+                Layout.preferredHeight: screenHeight - 140
                 Layout.preferredWidth: screenWidth
 
                 AppImage
@@ -119,6 +117,31 @@ Page
             onRefresh:
             {
                 Dispatcher.fetchCustom();
+            }
+        }
+
+        AppActivityIndicator
+        {
+            id: activiyIndicator
+
+            animating: false
+            hidesWhenStopped: true
+            anchors.centerIn: parent
+
+        }
+
+        Connections
+        {
+            target: Dispatcher.customBackend
+
+            onModelUpdateStarted:
+            {
+                activiyIndicator.startAnimating()
+            }
+
+            onModelUpdateFinished:
+            {
+                activiyIndicator.stopAnimating()
             }
         }
     }
