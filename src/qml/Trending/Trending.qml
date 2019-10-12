@@ -21,32 +21,70 @@ Page
         model: Dispatcher.trendingBackend.articleModel
         delegate: ColumnLayout
         {
-            spacing: 10
-            AppImage
+
+            Rectangle
             {
-                id: image
-
+                Layout.preferredHeight: screenHeight
                 Layout.preferredWidth: screenWidth
-                Layout.maximumHeight: screenHeight/3
-                source: model.urlToImage
-                fillMode: Image.PreserveAspectFit
-            }
+                AppImage
+                {
+                    id: image
 
-            AppText
-            {
-                text: model.title
-                wrapMode: Text.WordWrap
-                Layout.preferredWidth: screenWidth
-            }
+                    width: parent.width
+                    height: parent.height/3
+                    source: model.urlToImage
+                }
 
-            AppText
-            {
-                text: model.content
-                wrapMode: Text.WordWrap
-                Layout.preferredWidth: screenWidth
-            }
+                AppText
+                {
+                    id: title
 
+                    anchors.top: image.bottom
+                    anchors.topMargin: 10
+                    anchors.left: parent.left
+                    anchors.leftMargin: 10
+                    anchors.right: parent.right
+                    anchors.rightMargin: 10
+                    text: model.title
+                    font.family: "Verdana"
+                    font.bold: true
+                    wrapMode: Text.WordWrap
+                }
+
+                AppText
+                {
+                    id :content
+
+                    anchors.top: title.bottom
+                    anchors.topMargin: 10
+                    anchors.left: parent.left
+                    anchors.leftMargin: 10
+                    anchors.right: parent.right
+                    anchors.rightMargin: 10
+                    font.family: "Verdana"
+                    text: model.content
+                    elide: Text.ElideRight
+                    wrapMode: Text.WordWrap
+                }
+
+                Rectangle
+                {
+                    anchors.bottom: parent.bottom
+                    color: "black"
+                    width: parent.width
+                    height: 2
+                }
+            }
         }
     }
 
 }
+
+
+
+
+
+/*##^## Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+ ##^##*/
