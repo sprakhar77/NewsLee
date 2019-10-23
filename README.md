@@ -1,4 +1,4 @@
-## NewsApp
+## Trendie
 
 A cross platform news application written in C++/Qt/QML, uses REST services to querry various endpoints from NewsAPI 
 
