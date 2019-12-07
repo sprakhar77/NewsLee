@@ -13,11 +13,6 @@ Dispatcher::Dispatcher(QObject* parent)
 {
 }
 
-void Dispatcher::fetchSources()
-{
-    m_sourcesBackend->fetch();
-}
-
 void Dispatcher::fetchTrending()
 {
     if (const auto sourcesModel = m_sourcesBackend->sourceModel()) {

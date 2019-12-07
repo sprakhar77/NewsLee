@@ -21,7 +21,7 @@ SourcesAPI* SourcesBackend::sourcesAPI() const
     return m_sourcesAPI;
 }
 
-void SourcesBackend::fetch()
+void SourcesBackend::updateSources()
 {
     Q_ASSERT(m_sourcesAPI);
     const QUrl url = m_sourcesAPI->prepareRequest();

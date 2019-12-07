@@ -17,7 +17,7 @@ public:
     SourcesAPI* sourcesAPI() const;
     SourceModel* sourceModel() const;
 
-    void fetch();
+    Q_INVOKABLE void updateSources();
 
 private slots:
     void onResponseRecieved(const QJsonObject& json);

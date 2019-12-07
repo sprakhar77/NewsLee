@@ -7,6 +7,7 @@ Rectangle
     id: control
 
     property QtObject model: null
+    readonly property QtObject sourcesBackend: Dispatcher.sourcesBackend
 
     AppListView
     {
@@ -19,6 +20,7 @@ Rectangle
             onSelected:
             {
                 model.checked = !model.checked
+                sourcesBackend.updateSources()
             }
         }
     }
