@@ -23,8 +23,7 @@ signals:
     void modelUpdateFinished();
 
 private slots:
-    void
-    onResponseRecieved(const QJsonObject& json);
+    void onResponseRecieved(const QJsonObject& json);
 
 private:
     TrendingAPI* m_trendingAPI{ nullptr };

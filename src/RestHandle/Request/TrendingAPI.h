@@ -15,12 +15,11 @@ public:
     explicit TrendingAPI(QObject* parent = nullptr);
 
     QString searchKeyword() const;
+    void setSearchKeyword(QString searchKeyword);
+
     CheckableModel* sortBy() const;
 
     QUrl prepareRequest();
-
-public slots:
-    void setSearchKeyword(QString searchKeyword);
 
 signals:
     void searchKeywordChanged();

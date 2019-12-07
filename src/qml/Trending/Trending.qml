@@ -2,37 +2,28 @@ import Felgo 3.0
 import QtQuick 2.0
 import QtQuick.Layouts 1.3
 
-/*
-
-// EXAMPLE USAGE:
-// add the following piece of code inside your App { } to display the List Page
-
-Trending {
-
-}
-
-*/
-
 Page
 {
     id: control
+
+    readonly property QtObject trendingBackend: Dispatcher.trendingBackend
 
     title: "Trending"
 
     SearchBar
     {
         id: searchBar
+
         target: listView
         pullEnabled: true
+
         onAccepted:
         {
-            console.log("search accepted: "+text)
-
             // if the search bar is not empty, we prevent it from disappearing
             if(text !== "")
             {
                 searchBar.keepVisible = true
-                Dispatcher.trendingBackend.trendingAPI.searchKeyword = text
+                trendingBackend.trendingAPI.searchKeyword = text
                 Dispatcher.fetchTrending()
                 // update result
             }
@@ -48,7 +39,7 @@ Page
     {
         id: listView
 
-        model: Dispatcher.trendingBackend.articleModel
+        model: trendingBackend.articleModel
         delegate: ColumnLayout
         {
 
@@ -136,7 +127,7 @@ Page
 
         Connections
         {
-            target: Dispatcher.trendingBackend
+            target: trendingBackend
 
             onModelUpdateStarted:
             {
@@ -150,12 +141,3 @@ Page
         }
     }
 }
-
-
-
-
-
-/*##^## Designer {
-    D{i:0;autoSize:true;height:480;width:640}
-}
- ##^##*/

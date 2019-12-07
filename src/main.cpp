@@ -20,9 +20,10 @@ int main(int argc, char *argv[])
     Application application;
     application.initialize(&engine);
 
-    felgo.setMainQmlFileName(QStringLiteral("qml/Main.qml"));
+    // Change "Main.qml" to "main.qml" if the application crashes.
+    felgo.setMainQmlFileName(QStringLiteral("qml/main.qml"));
 
-//    FelgoLiveClient client (&engine);
+    // FelgoLiveClient client (&engine);
     engine.load(QUrl(felgo.mainQmlFileName()));
     return app.exec();
 }

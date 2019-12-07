@@ -35,8 +35,8 @@ void RestClient::sendRequest(const QUrl& url)
     request.setUrl(url);
     request.setRawHeader(HttpConstants::HTTP_HEADER_AUTHORIZATION,
         (QLatin1String(HttpConstants::AUTHORIZATION_BEARER) + QLatin1Char(' ') + HttpConstants::API_KEY).toUtf8());
-
     m_reply = m_networkAccessManager->get(request);
+
     connect(m_reply, &QIODevice::readyRead, this, &RestClient::onDataReadReady);
     connect(m_reply, &QNetworkReply::finished, this, &RestClient::onRequestCompleted);
 }
@@ -62,4 +62,6 @@ void RestClient::onRequestCompleted()
 
     // clear the buffer for next request
     m_dataBuffer->clear();
+    m_reply->disconnect();
+    m_reply->deleteLater();
 }

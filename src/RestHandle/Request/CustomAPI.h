@@ -18,16 +18,18 @@ public:
     explicit CustomAPI(QObject* parent = nullptr);
 
     QString searchKeyword() const;
+    void setSearchKeyword(QString searchKeyword);
+
     QDateTime from() const;
+    void setFrom(QDateTime from);
+
     QDateTime to() const;
+    void setTo(QDateTime to);
+
     CheckableModel* sortBy() const;
 
     QUrl prepareRequest();
 
-public slots:
-    void setSearchKeyword(QString searchKeyword);
-    void setFrom(QDateTime from);
-    void setTo(QDateTime to);
 
 signals:
     void searchKeywordChanged();

@@ -4,6 +4,10 @@ import QtQuick.Controls 2.0 as QuickControls2
 
 Page
 {
+    id: control
+
+    readonly property QtObject sourcesBackend: Dispatcher.sourcesBackend
+
     title: "Sources"
 
     // tabs
@@ -37,20 +41,16 @@ Page
 
         TabSection
         {
-            model: Dispatcher.sourcesBackend.sourcesAPI.category
+            model: sourcesBackend.sourcesAPI.category
         }
         TabSection
         {
-            model: Dispatcher.sourcesBackend.sourcesAPI.country
+            model: sourcesBackend.sourcesAPI.country
         }
         TabSection
         {
-            model: Dispatcher.sourcesBackend.sourcesAPI.language
+            model: sourcesBackend.sourcesAPI.language
         }
     }
 } // Page
 
-/*##^## Designer {
-    D{i:0;autoSize:true;height:480;width:640}
-}
- ##^##*/

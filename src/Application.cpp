@@ -21,7 +21,6 @@ Application::Application(QObject* parent)
 
 void Application::registerMetadata()
 {
-    // Register Metadata
     qmlRegisterUncreatableMetaObject(ApplicationEnums::staticMetaObject,
         "com.Application.Backend",
         1,

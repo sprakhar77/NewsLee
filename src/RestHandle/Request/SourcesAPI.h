@@ -14,11 +14,11 @@ class SourcesAPI : public QObject {
 public:
     explicit SourcesAPI(QObject* parent = nullptr);
 
-    QUrl prepareRequest();
-
     CheckableModel* country() const;
     CheckableModel* category() const;
     CheckableModel* language() const;
+
+    QUrl prepareRequest();
 
 private:
     CheckableModel* m_country{ nullptr };
